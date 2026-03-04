@@ -1,0 +1,9 @@
+# Reglas de Stack Tecnológico
+- Frontend: React.js con Vite, utilizando Tailwind CSS para estilos.
+- Backend: Node.js con Express.js (JavaScript preferido).
+- Estilo de código: Componentes funcionales en React, hooks personalizados y arquitectura de carpetas limpia (clean architecture).
+
+# Integración con el Catálogo
+- Siempre que trabajes en el Frontend, activa la skill `@react-development` y `@tailwind-css` de mi CATALOG.md.
+- Para el Backend, usa la skill `@express-api-design`.
+- No utilices clases de Java ni decoradores de Angular.
