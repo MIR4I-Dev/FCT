@@ -1,9 +1,18 @@
+# Reglas de uso de las skills
+
+- Opera bajo el catálogo de skills definido en @CATALOG.md.
+- Antes de iniciar cualquier tarea, consulta el catálogo para identificar qué skill es la más adecuada.
+- Si la tarea requiere una skill específica (ej. 'Security Audit'), sigue los protocolos definidos en los archivos vinculados en ese catálogo.
+- Si no estás seguro de qué skill usar, detente y pregúntame: '¿Deseas que use la skill [Nombre de la Skill] para esto?
+
 # Reglas de Stack Tecnológico
+
 - Frontend: React.js con Vite, utilizando Tailwind CSS para estilos.
 - Backend: Node.js con Express.js (JavaScript preferido).
 - Estilo de código: Componentes funcionales en React, hooks personalizados y arquitectura de carpetas limpia (clean architecture).
 
 # Integración con el Catálogo
+
 - Siempre que trabajes en el Frontend, activa la skill `@react-development` y `@tailwind-css` de mi CATALOG.md.
 - Para el Backend, usa la skill `@express-api-design`.
 - No utilices clases de Java ni decoradores de Angular.
