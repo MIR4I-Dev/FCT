@@ -1,9 +1,11 @@
+// Con callbacks
+
 const ls = require('node:fs');
 
 ls.readdir('.', (err, files) => {
     if(err){
         console.error('Error al leer el directorio', err);
-        return;
+        process.exit(1);
     }
     files.forEach(file => {
         console.log(file);
@@ -24,6 +26,7 @@ ls2.readdir('.')
     })
     .catch(err => {
         console.error('Error al leer el directorio', err);
+        process.exit(1);
     })
 
 console.log('-----> Haciendo cosas mientras leo el archivo asíncronamente con promesas...');

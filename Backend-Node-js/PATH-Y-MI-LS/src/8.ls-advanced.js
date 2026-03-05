@@ -8,11 +8,11 @@ async function readDir(directory){
     let files;
     try{
         files = await fs.readdir(directory);
-        return files;
     }catch{
         console.error(`Error al leer el directorio ${directory}`);
         process.exit(1);
     }
+    return files;
 }
 
 async function getStats(directory,file){
