@@ -1,0 +1,37 @@
+{
+  "name": "backend-node-js",
+  "version": "1.0.0",
+  "description": "Toda la información necesaria para utilizar Node",
+  "keywords": [
+    "fct",
+    "practicas",
+    "pruebas",
+    "cursos",
+    "node",
+    "react"
+  ],
+  "homepage": "https://github.com/MIR4I-Dev/FCT#readme",
+  "bugs": {
+    "url": "https://github.com/MIR4I-Dev/FCT/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MIR4I-Dev/FCT.git"
+  },
+  "license": "ISC",
+  "author": "Elvis Rafael González Santana",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "picocolors": "1.1.1"
+  },
+  "devDependencies": {
+    "semistandard": "17.0.0"
+  },
+  "eslintConfig": {
+    "extends": "semistandard"
+  }
+}
