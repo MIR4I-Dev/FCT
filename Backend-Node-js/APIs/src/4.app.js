@@ -1,13 +1,12 @@
 const express = require('express');
 const movies = require('./movies/movies.json');
 const crypto = require('node:crypto');
-const zod = require('zod');
+const z = require('zod');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.disable('x-powered-by');
-
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -30,22 +29,42 @@ app.get('/movies/:id', (req, res) => {
   return (movie) ? res.json(movie) : res.status(404).json({ message: 'Movie not found' });
 });
 
-app.post('/movies', (req, res) => {
-  // Esto no sería REST porque estamos guardando el estado de la aplicación en la memoria
-  const { title, genre, year, director, duration, rate, poster } = req.body;
+// Esto no sería REST porque estamos guardando el estado de la aplicación en la memoria
+const movieSchema = z.object({
+  title: z.string({
+    invalid_type_error: 'Movie title must be a string',
+    required_error: 'Movie title is required.'
+  }),
+  year: z.number().int().min(1900).max(2027),
+  director: z.string(),
+  duration: z.number().min(0).max(500),
+  poster: z.string().url({
+    message: 'Poster must be a valid URL'
+  }),
+  gender: z.array(
+    z.enum(['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Thriller', 'Sci-Fi']),
+    {
+      required_error: 'Movie genre is required.',
+      invalid_type_error: 'Movie genre must be an array of enum Genre.'
+    }
+  )
+});
 
-  if (!title || !genre || !year || !director || !duration || !rate || !poster) {
-    res.status(400).json({ message: 'Missing required fields' });
+function validateMovie (object) {
+  return movieSchema.safeParse(object);
+}
+
+module.exports = { validateMovie };
+
+app.post('/movies', (req, res) => {
+  const result = validateMovie(req.body);
+  if (result.error) {
+    res.status(400).json({ error: result.error.message });
   }
+
   const newMovie = {
-    id: crypto.randomUUID(),
-    title,
-    genre,
-    director,
-    year,
-    duration,
-    rate: rate ?? 0,
-    poster
+    id: crypto.randomUUID(), // UUID random
+    ...result.data
   };
   movies.push(newMovie);
 
