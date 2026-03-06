@@ -1,0 +1,35 @@
+### RECUPERAR TODAS LAS PELÍCULAS
+GET http://localhost:3000/movies
+
+### RECUPERAR UNA PELÍCULA POR ID
+GET http://localhost:3000/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+
+### RECUPERAR UNA PELÍCULA POR GÉNERO
+GET http://localhost:3000/movies?genre=action
+
+
+### CREAR UNA NUEVA PELÍCULA
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+  "title": "The Godfather",
+  "year": 1975,
+  "director": "Francis Ford Coppola",
+  "duration": 175,
+  "poster": "https://cdng.europosters.eu/pod_public/1300/262788.jpg",
+  "genre": ["Crime", "Drama"]
+}
+
+### ACTUALIZAR UNA PELÍCULA
+PUT http://localhost:3000/movies/1
+Content-Type: application/json
+
+{
+    "title": "The Matrix",
+    "year": 1999,
+    "director": "The Wachowskis"
+}
+
+### ELIMINAR UNA PELÍCULA
+DELETE http://localhost:3000/movies/1
