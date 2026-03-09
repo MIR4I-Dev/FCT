@@ -1,8 +1,8 @@
 // Con callbacks
 
-const ls = require('node:fs');
+const fs = require('node:fs');
 
-ls.readdir('.', (err, files) => {
+fs.readdir('.', (err, files) => {
     if(err){
         console.error('Error al leer el directorio', err);
         process.exit(1);
@@ -16,9 +16,9 @@ console.log('-----> Haciendo cosas mientras leo el archivo asíncronamente con c
 
 //Con promesas
 
-const ls2 = require('node:fs/promises');
+const fs2 = require('node:fs/promises');
 
-ls2.readdir('.')
+fs2.readdir('.')
     .then(files => {
         files.forEach(file => {
             console.log(file);

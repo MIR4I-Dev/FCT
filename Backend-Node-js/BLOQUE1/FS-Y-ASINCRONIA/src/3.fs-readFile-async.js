@@ -11,7 +11,7 @@ console.log('Leyendo el primer archivo...');
 const data = fs.readFile('./archivo.txt', 'utf-8', (err, data) => {
     if (err) {
         console.error(err);
-        return;
+        process.exit(1);
     }
     console.log('Primera lectura: ', data);
 });
@@ -23,7 +23,7 @@ console.log('Leyendo el segundo archivo...');
 const data2 = fs.readFile('./archivo2.txt', 'utf-8', (err, data2) => {
     if (err) {
         console.error(err);
-        return;
+        process.exit(1);
     }
     console.log('Segunda lectura: ', data2);
 });

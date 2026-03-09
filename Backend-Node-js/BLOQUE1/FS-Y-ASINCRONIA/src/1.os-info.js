@@ -7,10 +7,10 @@ const os = require('node:os'); //Con CommonJS
 
 console.log('Información del sistema operativo:');
 console.log('------------------------------------');
-console.log('Nombre del sistema operativo:', platform());
-console.log('Versión del sistema operativo:', release());
-console.log('Arquitectura:', arch());
-console.log('CPUs:', cpus()); 
-console.log('Memoria total:', totalmem() / 2**20 + 'MB');
-console.log('Memoria libre:', freemem() / 2**20 + 'MB');
-console.log('Días que lleva encendido su ordenador', (uptime() / 3600 /24).toFixed(0));
+console.log('Nombre del sistema operativo:', os.platform());
+console.log('Versión del sistema operativo:', os.release());
+console.log('Arquitectura:', os.arch());
+console.log('CPUs:', os.cpus()); 
+console.log('Memoria total:', os.totalmem() / 2**20 + 'MB');
+console.log('Memoria libre:', os.freemem() / 2**20 + 'MB');
+console.log('Días que lleva encendido su ordenador', (os.uptime() / 60 / 60 / 24).toFixed(0));
