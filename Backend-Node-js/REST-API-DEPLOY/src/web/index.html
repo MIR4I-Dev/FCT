@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probar API REST</title>
+    <style>
+        main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        article {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            height: auto;
+        }
+
+        img {
+            height: auto;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+    <script type="module">
+        fetch("http://localhost:3000/movies")
+            .then(res => res.json())
+            .then(movies => {
+                const html = movies.map(movie => `
+                    <article data-id="${movie.id}">
+                        <img src="${movie.poster}" alt="${movie.title}">
+                        <h2>${movie.title}</h2>
+                        <p>${movie.year}</p>
+                        <p>${movie.director}</p>
+                        <p>${movie.duration}</p>
+                        <p>${movie.genre}</p>
+                        <p>${movie.rate}</p>
+                        <button>Eliminar</button>
+                    </article>
+                `).join('');
+                document.getElementById('movies').innerHTML = html;
+
+                document.addEventListener('click', (event) => {
+                    if (event.target.tagName === 'BUTTON') {
+                        const article = event.target.closest('article');
+                        const id = article.dataset.id;
+                        fetch(`http://localhost:3000/movies/${id}`, {
+                            method: 'DELETE'
+                        })
+                            .then(res => {
+                                if (res.ok) {
+                                    // Si el servidor dijo "OK", borramos el HTML
+                                    article.remove();
+                                } else {
+                                    alert("No se pudo borrar la película de la base de datos");
+                                }
+                            });
+                    }
+                });
+            });
+    </script>
+</head>
+
+<body>
+    <main id="movies">
+
+    </main>
+</body>
+
+</html>
