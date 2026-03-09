@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start:mysql": "node --watch ./src/server-with-mysql.js",
+    "start:local": "node --watch ./src/server-with-local.js",
+    "dev": "node --env-file=.env src/server-with-mysql.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,16 +14,17 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "semistandard": "17.0.0"
+    "semistandard": "17.0.0",
+    "dotenv": "16.4.5"
   },
   "eslintConfig": {
     "extends": "semistandard"
   },
   "dependencies": {
     "cors": "2.8.6",
-    "dotenv": "17.3.1",
     "express": "5.2.1",
     "mongodb": "7.1.0",
+    "mysql2": "^3.19.0",
     "zod": "4.3.6"
   }
 }

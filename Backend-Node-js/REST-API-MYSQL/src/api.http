@@ -1,0 +1,33 @@
+### RECUPERAR TODAS LAS PELÍCULAS
+GET http://localhost:3000/movies
+
+### RECUPERAR UNA PELÍCULA POR ID
+GET http://localhost:3000/movies/f8af4402-f71a-4304-a8b4-23925976c392
+
+### RECUPERAR UNA PELÍCULA POR GÉNERO
+GET http://localhost:3000/movies?genre=Crime
+
+### CREAR UNA NUEVA PELÍCULA
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+  "title": "Interstellar",
+  "year": 2014,
+  "director": "Christopher Nolan",
+  "duration": 169,
+  "poster": "https://m.media-amazon.com/images/I/91Bc8cAmnAL.jpg",
+  "rate": 8.6,
+  "genre": ["Sci-Fi", "Drama"]
+}
+
+### ACTUALIZAR UNA PELÍCULA
+PATCH http://localhost:3000/movies/b17833f2-1bc2-11f1-ac45-e47fb22073e2
+Content-Type: application/json
+
+{
+    "genre": ["Action", "Drama"]
+}
+
+### ELIMINAR UNA PELÍCULA
+DELETE http://localhost:3000/movies/c4edca79-1bca-11f1-ac45-e47fb22073e2
