@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "semistandard": "17.0.0"
   },
@@ -18,7 +18,9 @@
     "extends": "semistandard"
   },
   "dependencies": {
+    "cors": "2.8.6",
     "express": "5.2.1",
+    "mongodb": "7.1.0",
     "zod": "4.3.6"
   }
 }
