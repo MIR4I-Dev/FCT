@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React en HTML</title>
+    <style>
+        button {
+            background: #09f;
+            color: #fff;
+            border: 0;
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+
+        body {
+            background: #222;
+            color: #fff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .liked {
+            background: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="module">
+        // Importamos desde un CDN que el navegador sí entiende
+        import ReactDOM from 'https://esm.sh/react-dom@18/client';
+        import React from 'https://esm.sh/react@18';
+
+        // Esto sigue siendo imperativo y no declarativo
+
+        const root = ReactDOM.createRoot(document.getElementById('app'));
+
+        const button1 = React.createElement('button', { "data-id": 123 }, 'Me gusta');
+        const button2 = React.createElement('button', { "data-id": 456 }, 'Me gusta');
+        const button3 = React.createElement('button', { "data-id": 789 }, 'Me gusta');
+
+        const div = React.createElement(React.Fragment, null, [button1, button2, button3]);
+
+        /*Para hacerlo declarativo usamos JSX (Basado en XML) NO ES HTML, ES JS ESCRIBIENDOLO. LO DE ABAJO ES LO MISMO QUE LO DE ARRIBA:
+        const element = <strong>Nº aleatorio. {Math.random()}</strong>
+            <React.Fragment>
+                <button dataId="123">Me gusta</button>
+                <button dataId="456">Me gusta</button>
+                <button dataId="789">Me gusta</button>
+            </React.Fragment>
+        */
+
+        // Solo podemos renderizar un elemento
+        root.render(div);
+    </script>
+</body>
+
+</html>
