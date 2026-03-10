@@ -1,0 +1,17 @@
+### REGISTRAR UN NUEVO USUARIO
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "username": "midudev4",
+    "password": "123456"
+}
+
+### LOGIN DE USUARIO
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "midudev3",
+    "password": "123456"
+}

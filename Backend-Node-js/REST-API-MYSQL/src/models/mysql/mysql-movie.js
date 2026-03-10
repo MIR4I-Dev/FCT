@@ -80,7 +80,6 @@ export class MovieModel {
       );
 
       // 3. INSERTAR LOS GÉNEROS (Relación muchos a muchos)
-      // Suponiendo que tienes una tabla 'genre' con los nombres y IDs
       for (const genreName of genres) {
         await connection.query(
           `INSERT INTO movie_genres (movie_id, genre_id)
@@ -102,14 +101,6 @@ export class MovieModel {
       throw new Error('Error al crear la película');
     }
   }
-
-  /*  static async delete({id}){
-      const movieIndex = movies.findIndex(movie => movie.id === id);
-      if (movieIndex === -1) return false;
-
-      movies.splice(movieIndex, 1);
-      return true;
-  } */
 
   static async delete ({ id }) {
     try {
