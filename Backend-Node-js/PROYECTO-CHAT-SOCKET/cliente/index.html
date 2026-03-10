@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elvisChat</title>
+    <script type="module">
+        import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js';
+
+        const getUsername = async () => {
+            try {
+                const username = localStorage.getItem('username');
+                // Si existe el username y NO se quedó corrupto con un texto "undefined" o "null"
+                if (username && username !== 'undefined' && username !== 'null') {
+                    return username;
+                }
+
+                // Cambiamos a la API de randomuser.me que es 100% estable
+                const res = await fetch('https://randomuser.me/api/');
+                const data = await res.json();
+
+                // Extraemos el username que viene en el JSON
+                const newUsername = data.results[0].login.username;
+
+                localStorage.setItem('username', newUsername);
+                return newUsername;
+            } catch (error) {
+                console.error("Error al obtener username:", error);
+                return "Invitado-" + Math.floor(Math.random() * 1000);
+            }
+        }
+
+        // Usamos una función autoejecutable para poder usar 'await' a nivel superior sin problemas
+        (async () => {
+            const username = await getUsername();
+            console.log("Conectando como:", username);
+
+            const socket = io({
+                auth: {
+                    user: username,
+                    serverOffset: 0
+                }
+            });
+
+            const form = document.getElementById('form');
+            const input = document.getElementById('input');
+            const messages = document.getElementById('messages');
+
+            // ¡EL ORDEN ES VITAL! Debe coincidir con: io.emit('chat message', msg, id, user);
+            socket.on('chat message', (msg, id, emitUser) => {
+                const userToDisplay = emitUser || 'Desconocido';
+                const item = `<li><p>${msg}</p><small>${userToDisplay}</small></li>`;
+                messages.insertAdjacentHTML('beforeend', item);
+
+                // Actualizamos el offset
+                socket.auth.serverOffset = id;
+
+                // Auto-scroll (Opcional, pero recomendado)
+                messages.scrollTop = messages.scrollHeight;
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (input.value) {
+                    // Solo enviamos el mensaje. El servidor ya sabe quién somos por el 'auth'
+                    socket.emit('chat message', input.value);
+                    input.value = '';
+                }
+            });
+        })();
+    </script>
+    <style>
+        *::before,
+        *::after,
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Esto ayuda al navegador a renderizar inputs y barras de scroll en oscuro */
+            color-scheme: light dark;
+
+            /* Definimos variables para tener control */
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --border-color: #ccc;
+        }
+
+        /* Si el usuario tiene el sistema en modo oscuro... */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #eeeeee;
+                --border-color: #444;
+            }
+        }
+
+        body {
+            /* Usamos las variables */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: grid;
+            height: 100vh;
+            padding: 36px;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages>li {
+            padding: 0.5rem 1rem;
+        }
+
+        #messages>li:nth-child(odd) {
+            background: black;
+        }
+
+        #chat {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            /* Un poco más moderno */
+            overflow: hidden;
+            width: 350px;
+            height: 100%;
+            padding: 12px;
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #form {
+            bottom: 0;
+            display: flex;
+            height: 48px;
+            left: 0;
+            padding: 4px;
+            position: absolute;
+            right: 0;
+            width: 100%;
+        }
+
+        /* Estilo básico para que los inputs no se vean feos en oscuro */
+        input {
+            background: transparent;
+            color: inherit;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            border-radius: 4px;
+            flex: 1;
+        }
+
+        #input:focus {
+            outline: none;
+        }
+
+        #form>button {
+            background: #09f;
+            color: #fff;
+            border: none;
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 0.25rem;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chat">
+        <ul id="messages"></ul>
+        <form id="form">
+            <input type="text" name="message" id="input" placeholder="Escribe tu mensaje..." autocomplete="off" />
+            <button type="submit">Enviar</button>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
