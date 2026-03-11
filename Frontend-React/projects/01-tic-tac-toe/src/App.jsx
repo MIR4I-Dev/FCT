@@ -50,15 +50,10 @@ function App() {
     }
   }
 
-  const handleResetGame = () => {
-    resetGame()
-    setWinner(null)
-  }
-
   return (
     <main className='board'>
       <h1>Tic Tac Toe</h1>
-      <button onClick={handleResetGame}>Reiniciar</button>
+      <button onClick={resetGame}>Reiniciar</button>
       <section className='game'>
         {
           board.map((_, index) => {
@@ -85,7 +80,7 @@ function App() {
         </Square>
       </section>
 
-      {winner !== null && <WinnerModal winner={winner} handleResetGame={handleResetGame} />}
+      {winner !== null && <WinnerModal winner={winner} resetGame={resetGame} />}
     </main>
   )
 }
