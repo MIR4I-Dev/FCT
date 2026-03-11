@@ -1,6 +1,6 @@
 import { useState } from 'react'; // Hook (utilidades de Reacts)
 
-export function TwitterFollowCard({ children, userName = 'unknown', isFollowing }) {
+export function TwitterFollowCard({ children, userName = 'unknown', isFollowing, avatar }) {
     const [initialIsFollowing, setIsFollowing] = useState(isFollowing); //useState devuelve el booleano y lo que me permite cambiarlo, ponemos el estado por defecto en useState
     const handleClick = () => {
         setIsFollowing(!initialIsFollowing);
@@ -17,7 +17,7 @@ export function TwitterFollowCard({ children, userName = 'unknown', isFollowing 
                 <img
                     className='tw-followCard-avatar'
                     alt={`El avatar de ${userName}`}
-                    src={`https://unavatar.io/${userName}`}
+                    src={avatar}
                 />
                 <div className='tw-followCard-info'>
                     <strong>{children}</strong>

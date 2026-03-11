@@ -5,17 +5,20 @@ const users = [
     {
         userName: 'midudev',
         name: 'Miguel Ángel Durán',
-        isFollowing: true
+        isFollowing: true,
+        avatar: 'https://randomuser.me/api/portraits/men/1.jpg'
     },
     {
         userName: 'pheralb',
         name: 'Pablo Hernández',
-        isFollowing: false
+        isFollowing: false,
+        avatar: 'https://randomuser.me/api/portraits/men/2.jpg'
     },
     {
         userName: 'pedromiquel',
         name: 'Pedro Miquel',
-        isFollowing: false
+        isFollowing: false,
+        avatar: 'https://randomuser.me/api/portraits/men/3.jpg'
     }
 ]
 
@@ -30,6 +33,7 @@ export function App() {
                         key={user.userName}
                         isFollowing={user.isFollowing}
                         userName={user.userName}
+                        avatar={user.avatar}
                     >
                         {user.name}
                     </TwitterFollowCard>
