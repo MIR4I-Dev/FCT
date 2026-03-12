@@ -1,0 +1,22 @@
+.app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    place-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.cat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.cat img {
+    height: auto;
+    max-width: 320px;
+}
