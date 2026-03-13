@@ -1,0 +1,58 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* Sube esto para que quepan más de 2 películas */
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Centra el contenedor en la pantalla */
+}
+
+main {
+  /* Quita el display: flex si no vas a poner elementos uno al lado de otro.
+     Si lo dejas, asegúrate de que ocupe el 100% */
+  width: 100%;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+p.error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.movies {
+  display: grid;
+  /* auto-fill suele funcionar mejor que auto-fit para listas de búsqueda 
+     porque mantiene el tamaño de las celdas aunque haya pocos resultados */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  width: 100%;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.movie {
+  text-align: center;
+}
+
+.movie img {
+  width: 100%;
+  /* Ocupa el ancho del li */
+  max-width: 200px;
+  /* O el ancho que prefieras */
+  height: auto;
+  /* Mantiene la proporción */
+  aspect-ratio: 2/3;
+  /* Opcional: fuerza a que todos los posters tengan la misma forma */
+  object-fit: cover;
+  /* Recorta la imagen si no encaja en el aspect-ratio */
+}
