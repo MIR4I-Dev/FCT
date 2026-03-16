@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 
 fs.readdir('.', (err, files) => {
-    if(err){
+    if (err) {
         console.error('Error al leer el directorio', err);
         process.exit(1);
     }
@@ -12,7 +12,7 @@ fs.readdir('.', (err, files) => {
     });
 });
 
-console.log('-----> Haciendo cosas mientras leo el archivo asíncronamente con callback...');
+console.log('-----> Haciendo cosas mientras leo el contenido asíncronamente con callback...');
 
 //Con promesas
 
@@ -29,5 +29,5 @@ fs2.readdir('.')
         process.exit(1);
     })
 
-console.log('-----> Haciendo cosas mientras leo el archivo asíncronamente con promesas...');
+console.log('-----> Haciendo cosas mientras leo el contenido asíncronamente con promesas...');
 

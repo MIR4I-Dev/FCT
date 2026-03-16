@@ -10,9 +10,11 @@ export function Filters() {
 
     // Por eso usaremos filters como fuente de verdad y la única fuente de verdad global
     const handleChangePrice = (event) => {
+        // setFilters puede recibir una función que recibe el estado anterior y devuelve el nuevo estado
+        // Esto es útil para evitar problemas con el estado asíncrono
         setFilters(prevFilters => ({
             ...prevFilters,
-            minPrice: event.target.value
+            minPrice: Number(event.target.value)
         }))
     }
 

@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise';
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 
 // Esto asegura que encuentre el certificado sin importar desde dónde lances el comando
 const caCertPath = path.join(process.cwd(), 'isrgrootx1.pem');
@@ -24,7 +25,7 @@ const config = {
 export const connection = await mysql.createConnection(config);
 
 export class MovieModel {
-  static async getAll ({ genre }) {
+  static async getAll({ genre }) {
     // 1. Si no hay género, consulta simple
     if (!genre) {
       const [movies] = await connection.query(
@@ -46,7 +47,7 @@ export class MovieModel {
     return movies;
   }
 
-  static async getById ({ id }) {
+  static async getById({ id }) {
     const [movies] = await connection.query(
       `SELECT title, year, director, duration, poster, rate, BIN_TO_UUID(id) id 
        FROM movie 
@@ -57,7 +58,7 @@ export class MovieModel {
     return movies;
   }
 
-  static async create ({ input }) {
+  static async create({ input }) {
     const {
       genre: genres, // Es un array: ['Action', 'Drama']
       title,
@@ -72,14 +73,14 @@ export class MovieModel {
     const uuid = crypto.randomUUID();
 
     try {
-    // 2. Insertar la película
+      // 2. Insertar la película
       await connection.query(
-      `INSERT INTO movie (id, title, year, director, duration, poster, rate)
+        `INSERT INTO movie (id, title, year, director, duration, poster, rate)
        VALUES (UUID_TO_BIN(?), ?, ?, ?, ?, ?, ?);`,
-      [uuid, title, year, director, duration, poster, rate]
+        [uuid, title, year, director, duration, poster, rate]
       );
 
-      // 3. INSERTAR LOS GÉNEROS (Relación muchos a muchos)
+      // 3. INSERTAR LOS GÉNEROS (Relación muchos a muchos) con subconsulta
       for (const genreName of genres) {
         await connection.query(
           `INSERT INTO movie_genres (movie_id, genre_id)
@@ -102,7 +103,7 @@ export class MovieModel {
     }
   }
 
-  static async delete ({ id }) {
+  static async delete({ id }) {
     try {
       await connection.beginTransaction();
       // Validamos si la peli existe
@@ -132,7 +133,7 @@ export class MovieModel {
     }
   }
 
-  static async update ({ id, input }) {
+  static async update({ id, input }) {
     // 1. Separamos los géneros del resto de campos de la película
     const { genre, ...movieFields } = input;
 

@@ -1,9 +1,7 @@
-// import { MovieModel } from '../models/local-file-system/models-movie.js'; si usara modelo local
-
 import { validateMovie, validatePartialMovie } from '../schemas/schemas-movies.js';
 
 export class MovieController {
-  constructor ({ movieModel }) {
+  constructor({ movieModel }) {
     this.movieModel = movieModel;
   }
 

@@ -25,11 +25,9 @@ test('app shows random fact and image', async ({ page }) => {
 
   // ... después del clic
 
-  // 1. Verificamos que el TEXTO cambie (esto ya lo tienes y suele funcionar bien)
+  // 1. Verificamos que el TEXTO cambie
   await expect(text).not.toHaveText(textContent || '');
 
   // 2. Verificamos que el SRC de la imagen cambie
-  // Playwright se quedará esperando (reintentando) hasta que el atributo 'src' 
-  // sea distinto al que guardamos al principio.
   await expect(image).not.toHaveAttribute('src', imageSrc || '');
 });

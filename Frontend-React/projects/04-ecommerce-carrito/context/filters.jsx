@@ -12,6 +12,7 @@ export function FiltersProvider({ children }) {
         minPrice: 0
     })
 
+    // 3. Crear el componente que va a envolver a todos los componentes que necesiten acceder al contexto y pasamos los valores del contexto
     return (
         <FiltersContext.Provider value={{
             filters,

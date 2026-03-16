@@ -35,20 +35,21 @@ const UPDATE_STATE_BY_ACTION = {
 
             // ⚡ usando el spread operator y slice
             const newState = [
-                ...state.slice(0, productInCartIndex),
-                { ...state[productInCartIndex], quantity: state[productInCartIndex].quantity + 1 },
-                ...state.slice(productInCartIndex + 1)
+                ...state.slice(0, productInCartIndex), // 1. Copia todo lo que hay ANTES del producto
+                { ...state[productInCartIndex], quantity: state[productInCartIndex].quantity + 1 }, // 2. Copia el producto y cámbiale la cantidad. 
+                ...state.slice(productInCartIndex + 1) // 3. Copia todo lo que hay DESPUÉS del producto
             ]
 
             updateLocalStorage(newState)
             return newState
         }
 
+        // Si no está en el carrito, lo agregamos con cantidad 1
         const newState = [
-            ...state,
+            ...state, // Copia todo lo que hay en el carrito
             {
-                ...action.payload, // product
-                quantity: 1
+                ...action.payload, // Copia el producto
+                quantity: 1 // Le asigna cantidad 1
             }
         ]
 
@@ -61,18 +62,22 @@ const UPDATE_STATE_BY_ACTION = {
 
         if (productInCartIndex >= 0) {
             const item = state[productInCartIndex]
+            let newState
 
             // Si solo hay uno, lo eliminamos directamente
             if (item.quantity <= 1) {
-                return state.filter(item => item.id !== id)
+                newState = state.filter(item => item.id !== id)
+            } else {
+                // Si hay más de uno, restamos
+                newState = state.map(item =>
+                    item.id === id
+                        ? { ...item, quantity: item.quantity - 1 }
+                        : item
+                )
             }
 
-            // Si hay más de uno, restamos
-            return state.map(item =>
-                item.id === id
-                    ? { ...item, quantity: item.quantity - 1 }
-                    : item
-            )
+            updateLocalStorage(newState)
+            return newState
         }
         return state
     },

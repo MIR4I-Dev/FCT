@@ -2,8 +2,8 @@ import './App.css'
 import { useState } from 'react'
 import confetti from 'canvas-confetti'
 import { Square } from './components/Square.jsx'
-import { TURNS } from './constants'
-import { checkWinner, checkEndGame } from './logic/board'
+import { TURNS } from './constants.js'
+import { checkWinner, checkEndGame } from './logic/board.js'
 import { WinnerModal } from './components/WinnerModal.jsx'
 
 function App() {

@@ -9,6 +9,10 @@ export function Products({ products }) {
         <main className="products">
             <ul>
                 {products.map(product => {
+                    const handleClick = () => {
+                        (isProductInCart) ? removeFromCart(product) : addToCart(product)
+                    }
+
                     const isProductInCart = cart.some(item => item.id === product.id)
                     return (
                         <li key={product.id}>
@@ -21,7 +25,8 @@ export function Products({ products }) {
                             </div>
                             <div>
                                 <button style={{ backgroundColor: isProductInCart ? 'red' : '#09f' }}
-                                    onClick={() => isProductInCart ? removeFromCart(product) : addToCart(product)}>
+                                    onClick={handleClick}
+                                    aria-label={isProductInCart ? 'Eliminar del carrito' : 'Añadir al carrito'}>
                                     {isProductInCart ? <RemoveFromCartIcon /> : <AddToCartIcon />}
                                 </button>
                             </div>

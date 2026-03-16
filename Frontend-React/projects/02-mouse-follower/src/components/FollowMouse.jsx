@@ -3,16 +3,17 @@ import { useState, useEffect } from 'react'
 export const FollowMouse = () => {
 
     const [enabled, setEnabled] = useState(false);
-    const [position, setPosition] = useState({ x: 0, y: 0 })
+    const [position, setPosition] = useState({ x: -1000, y: -1000 })
 
     // No puedes meter un Hook en un if, debe estar en el cuerpo tal y como se muestra aquí
 
-    useEffect(() => {
-        console.log('efecto', { enabled })
+    const handleClick = () => {
+        setEnabled(!enabled)
+    }
 
+    useEffect(() => {
         const handleMove = (event) => {
             const { clientX, clientY } = event
-            console.log('handleMove', { clientX, clientY })
             setPosition({ x: clientX, y: clientY })
         }
 
@@ -20,10 +21,10 @@ export const FollowMouse = () => {
         if (enabled) window.addEventListener('pointermove', handleMove)
 
 
-        // Esto se ejecutará al desrenderizarse el componente o cuando cambie la dependencia enabled antes de ejecutarse el efecto de nuevo. Limpiará el efecto totalmente. 
+        // Esto se ejecutará al desrenderizarse el componente o cuando cambie la dependencia enabled antes de ejecutarse el efecto de nuevo. Limpiará el efecto totalmente. En este caso cuando se desactive el puntero
         return () => {
             window.removeEventListener('pointermove', handleMove)
-            setPosition({ x: 0, y: 0 });
+            setPosition({ x: -1000, y: -1000 });
         }
 
     }, [enabled])
@@ -43,8 +44,9 @@ export const FollowMouse = () => {
                     height: 50,
                     transform: `translate(${position.x}px, ${position.y}px)`
                 }}></div>
+                // Para un efecto de cola ponemos top y left a position.x y position.y respectivamente, si queremos un efecto de foco pues como ya lo tenemos.
             }
-            <button onClick={() => { setEnabled(!enabled) }}>
+            <button onClick={handleClick}>
                 {enabled ? 'Desactivar' : 'Activar'} efecto puntero
             </button>
         </>

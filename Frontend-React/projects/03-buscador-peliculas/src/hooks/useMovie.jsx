@@ -6,7 +6,7 @@ export function useMovies({ search, sort }) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
-    // Usamos el ref para evitar búsquedas duplicadas consecutivas
+    // Usamos el ref para evitar búsquedas duplicadas consecutivas, useRef es un hook que nos permite guardar valores durante TODO el ciclo de vida del componente 
     const previousSearch = useRef(search)
 
     const getMovies = useCallback(async ({ search }) => {

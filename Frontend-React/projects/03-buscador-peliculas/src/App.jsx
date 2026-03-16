@@ -15,11 +15,9 @@ export function App() {
     getMovies({ search })
     /*FORMA NO CONTROLADA
     const fields = Object.fromEntries(new window.FormData(event.target))
-    console.log(fields)
 
     // Con fields podría hacer validaciones ya toma TODOS los campos con name. Esta es una forma no controlada de hacerlo (más óptima)
     if (!fields.query) return
-    console.log(fields)
     */
 
   }

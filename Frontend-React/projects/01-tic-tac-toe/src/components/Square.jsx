@@ -1,5 +1,5 @@
 export const Square = ({ children, updateBoard, index, isSelected }) => {
-    const className = `square ${isSelected ? 'is-selected' : ''}`
+    const className = `square ${isSelected ?? 'is-selected'}`
     const handleClick = () => {
         if (updateBoard) updateBoard(index)
     }
