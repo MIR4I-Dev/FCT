@@ -11,15 +11,17 @@ const apiKey = import.meta.env.VITE_OPENAI_API_KEY
 const configuration = new Configuration({ apiKey })
 const openai = new OpenAIApi(configuration)
 
-export async function translate ({
-  fromLanguage,
-  toLanguage,
-  text
-}: {
+interface TranslateArgs {
   fromLanguage: FromLanguage
   toLanguage: Language
   text: string
-}) {
+}
+
+export async function translate({
+  fromLanguage,
+  toLanguage,
+  text
+}: TranslateArgs) {
   if (fromLanguage === toLanguage) return text
 
   const messages = [
