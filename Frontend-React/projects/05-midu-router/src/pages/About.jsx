@@ -18,6 +18,8 @@ const useI18n = (lang) => {
 }
 
 export default function AboutPage ({ routeParams }) {
+  // routeParams.lang es el parámetro dinámico que viene de la ruta /:lang/about
+  // Si no viene, se toma 'es' por defecto
   const i18n = useI18n(routeParams.lang ?? 'es')
 
   return (

@@ -5,28 +5,29 @@ import { Route } from './components/Route.jsx'
 import { Link } from './components/Link.jsx'
 import { getCurrentPath } from './utils/getCurrentPath.js'
 
+// Mock (simulación) de getCurrentPath para poder controlar la ruta actual en los tests
 vi.mock('./utils/getCurrentPath.js', () => ({
-  getCurrentPath: vi.fn()
+  getCurrentPath: vi.fn() // vi.fn() crea una función mock que permite rastrear las llamadas y los argumentos que se le pasan
 }))
 
 describe('Router', () => {
   beforeEach(() => {
-    cleanup()
-    vi.clearAllMocks()
+    cleanup() // Limpia el DOM después de cada test
+    vi.clearAllMocks() // Limpia todas las llamadas a las funciones mock
   })
 
   it('should render without problems', () => {
-    render(<Router routes={[]} />)
-    expect(true).toBeTruthy()
+    render(<Router routes={[]} />) // Renderiza el Router sin rutas
+    expect(true).toBeTruthy() // Verifica que el Router se renderice sin problemas
   })
 
   it('should render 404 if no routes match', () => {
-    render(<Router routes={[]} defaultComponent={() => <h1>404</h1>} />)
-    expect(screen.getByText('404')).toBeTruthy()
+    render(<Router routes={[]} defaultComponent={() => <h1>404</h1>} />) // Renderiza el Router con rutas vacías y un componente 404
+    expect(screen.getByText('404')).toBeTruthy() // Verifica que el componente 404 se renderice
   })
 
   it('should render the component of the first route that matches', () => {
-    getCurrentPath.mockReturnValue('/about')
+    getCurrentPath.mockReturnValue('/about') // Establece la ruta actual como '/about'
 
     const routes = [
       {
@@ -39,12 +40,12 @@ describe('Router', () => {
       }
     ]
 
-    render(<Router routes={routes} />)
-    expect(screen.getByText('About')).toBeTruthy()
+    render(<Router routes={routes} />) // Renderiza el Router con las rutas
+    expect(screen.getByText('About')).toBeTruthy() // Verifica que el componente About se renderice
   })
 
   it('should navigate using Links', async () => {
-    getCurrentPath.mockReturnValueOnce('/')
+    getCurrentPath.mockReturnValueOnce('/') // Establece la ruta actual como '/'
 
     render(
       <Router>

@@ -1,13 +1,4 @@
 @import "tailwindcss";
-@plugin "@midudev/tailwind-animations";
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/assets/inter.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 100 700;
-  font-display: swap;
-}
 
 @theme {
   /* Colores */
@@ -24,6 +15,16 @@
   
   /* Breakpoints */
   --breakpoint-xs: 350px;
+}
+
+@plugin "@midudev/tailwind-animations";
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/inter.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
 }
 
 .social-button {
