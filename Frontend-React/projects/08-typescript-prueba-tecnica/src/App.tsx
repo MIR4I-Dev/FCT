@@ -13,6 +13,7 @@ function App () {
   // useRef -> para guardar un valor
   // que queremos que se comparta entre renderizados
   // pero que al cambiar, no vuelva a renderizar el componente
+  // no es necesario crear un estado para esto
 
   const toggleColors = () => {
     setShowColors(!showColors)

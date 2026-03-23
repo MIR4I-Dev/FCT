@@ -6,8 +6,8 @@ import { Results } from './components/Results'
 
 function App () {
   const { data, isLoading, error } = useQuery<CommentWithId[]>(
-    ['comments'], // <-----
-    getComments
+    ['comments'], // <----- Query Key
+    getComments // <----- Query Function
   )
   const queryClient = useQueryClient()
 
@@ -20,11 +20,12 @@ function App () {
       // por si tenemos que hacer un rollback
       const previousComments = queryClient.getQueryData(['comments'])
 
-      queryClient.setQueryData(['comments'], (oldData?: Comment[]): Comment[] => {
+      queryClient.setQueryData(['comments'], (oldData?: Comment[]): Comment[] /*El retorno al igual que los antiguos datos que recibe son arrays de comentarios*/ => {
         const newCommentToAdd = structuredClone(newComment)
         newCommentToAdd.preview = true
-
+        // si no hay datos previos, devolvemos un array con el nuevo comentario
         if (oldData == null) return [newCommentToAdd]
+        // si hay datos previos, devolvemos un array con los datos previos y el nuevo comentario
         return [...oldData, newCommentToAdd]
       })
 
@@ -36,7 +37,9 @@ function App () {
         queryClient.setQueryData(['comments'], context.previousComments)
       }
     },
+    // se ejecuta siempre que la mutación termine, ya sea con éxito o con error
     onSettled: async () => {
+      // invalidamos la query para que se vuelva a ejecutar
       await queryClient.invalidateQueries({
         queryKey: ['comments']
       })
