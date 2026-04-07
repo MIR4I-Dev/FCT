@@ -1,4 +1,4 @@
-// process - Informacion relacionada al proceso actual cuando se ejecuta con node fich arg1 arg2 arg3 y se recupera en un arraycon:
+// process - Informacion relacionada al proceso actual cuando se ejecuta con node fich arg1 arg2 arg3 y se recupera en un array con:
 // console.log(process.argv);
 
 // Controlar el proceso y su salida:

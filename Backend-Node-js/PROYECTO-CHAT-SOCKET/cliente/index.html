@@ -27,7 +27,7 @@
                 return newUsername;
             } catch (error) {
                 console.error("Error al obtener username:", error);
-                return "Invitado-" + Math.floor(Math.random() * 1000);
+                return "Invitado-" + Math.floor(Math.random() * 1000) + 1;
             }
         }
 
