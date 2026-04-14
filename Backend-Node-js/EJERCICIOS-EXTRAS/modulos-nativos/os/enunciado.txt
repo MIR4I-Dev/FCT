@@ -1,0 +1,16 @@
+Instrucciones:
+Crea un archivo llamado monitor.mjs.
+Importa el módulo nativo os.
+Crea una función llamada obtenerInfoSistema que recopile y devuelva un objeto con:
+Nombre del SO: (Ej: Windows_NT, Linux...)
+Arquitectura: (Ej: x64)
+CPUs: Cuántos núcleos tiene tu procesador.
+Memoria Total: Convertida a GB (usa 2 decimales).
+Memoria Libre: Convertida a GB (usa 2 decimales).
+Tiempo encendido: Cuántas horas lleva encendido el PC (el método te lo da en segundos, ¡haz la conversión!).
+Muestra toda esta información en la consola de una forma organizada (puedes usar console.table() para que se vea como una tabla profesional).
+💡 Un pequeño empujón técnico
+Para las conversiones, recuerda estas fórmulas simples:
+De Bytes a GB: Dividir entre $1024^3$ (o entre 1024 / 1024 / 1024).
+De Segundos a Horas: Dividir entre $3600$.
+Reto Extra: Haz que el programa imprima una alerta si la memoria libre es inferior al 20% de la memoria total.

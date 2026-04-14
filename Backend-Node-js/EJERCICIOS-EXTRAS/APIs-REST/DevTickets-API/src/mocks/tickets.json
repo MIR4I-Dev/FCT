@@ -1,0 +1,12 @@
+[
+  {
+    "id": "0972ba76-6f25-487b-b82f-153dfe2e848d",
+    "title": "Ticket de prueba",
+    "description": "Descripción de prueba",
+    "priority": "high",
+    "status": "open",
+    "tags": [
+      "test"
+    ]
+  }
+]

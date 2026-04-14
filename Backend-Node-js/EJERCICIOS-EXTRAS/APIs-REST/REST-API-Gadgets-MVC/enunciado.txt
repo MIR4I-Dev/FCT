@@ -1,0 +1,55 @@
+🛠️ Ejercicio: "TechStore Inventory API"
+Vas a crear una API para gestionar productos tecnológicos.
+
+1. El Modelo de Datos (Base de Datos / JSON)
+Cada Producto debe tener:
+
+id: UUID (en JSON) o INT Auto-increment (en SQL).
+
+name: String (ej: "Logitech MX Master 3").
+
+brand: String (ej: "Logitech").
+
+price: Decimal/Float (ej: 99.99).
+
+stock: Integer (ej: 15).
+
+Categorías: Un producto puede pertenecer a varias categorías (ej: ['perifericos', 'oficina', 'bluetooth']).
+
+2. Estructura del Proyecto (MVC Obligatorio)
+Tu carpeta debe verse así:
+
+/controllers/products.js
+
+/models/[mysql o local-file-system]/product.js
+
+/routes/products.js
+
+/schemas/products.js (Validación con Zod)
+
+app.js
+
+3. Los Endpoints a Implementar
+GET /products:
+
+Debe permitir filtrar por brand (Marca).
+
+Debe permitir filtrar por category (esto te obligará a practicar el JOIN o el filtrado de arrays).
+
+POST /products: Crea un producto nuevo con sus categorías.
+
+DELETE /products/:id: Elimina el producto y sus relaciones (usa la Transacción o el ON DELETE CASCADE que comentamos).
+
+PATCH /products/:id: Actualización parcial. Si se envía el array de categorías, aplica la técnica de "Borrar y Reemplazar".
+
+🎯 El "Giro" del ejercicio (El reto técnico)
+Para que no sea "más de lo mismo", añade esta regla de negocio en tu Controlador:
+
+Regla de Alerta de Stock: En el GET /products, si un producto tiene un stock menor a 5, añade dinámicamente una propiedad al JSON de respuesta llamada low_stock: true.
+
+Esto te ayudará a practicar cómo manipular los datos que vienen del Modelo antes de enviarlos al cliente a través del Controlador.
+
+¿Por dónde empezar?
+Te sugiero que primero definas el Schema de Zod y luego el Modelo SQL (las tablas en PHPMyAdmin). Una vez tengas las tablas products, categories y la intermedia product_categories, el resto del código fluirá solo.
+
+¿Quieres que te pase el código SQL para crear las tablas rápidamente o prefieres practicarlas tú en PHPMyAdmin?

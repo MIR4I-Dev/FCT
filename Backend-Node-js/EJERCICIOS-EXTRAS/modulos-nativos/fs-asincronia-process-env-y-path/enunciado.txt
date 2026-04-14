@@ -1,0 +1,36 @@
+🛠️ Ejercicio: "El Clasificador Automático de Logs"
+Imagina que tienes una carpeta llena de archivos mezclados. Tu misión es crear un script que organice la información basándose en una "Configuración de Entorno".
+
+Requisitos:
+Variables de Entorno:
+
+Crea un archivo .env (o usa process.env directamente en la terminal) con una variable llamada LOG_EXTENSION. Asígnale el valor .log.
+
+Módulo Path & FS:
+
+Tu script debe leer el contenido de la carpeta actual (donde se ejecuta el script).
+
+Debe filtrar solo los archivos que coincidan con la extensión definida en tu variable de entorno.
+
+Lógica Asíncrona (async/await):
+
+Para cada archivo encontrado que coincida, debes leer su contenido.
+
+Si el contenido del archivo incluye la palabra "ERROR", debes copiar ese archivo a una carpeta nueva llamada /urgente.
+
+Si no contiene "ERROR", simplemente muéstralo en consola con el formato: [OK] - NombreArchivo.log.
+
+Uso de Process:
+
+Si la carpeta /urgente no existe, el script debe crearla.
+
+Si el script se ejecuta y no encuentra ningún archivo con esa extensión, debe terminar el proceso con un mensaje de error y un código de salida 1 (process.exit(1)).
+
+💡 Pistas técnicas:
+Usa fs.readdir para ver los archivos.
+
+Usa path.extname() para comparar con la variable de entorno.
+
+Usa fs.mkdir(path, { recursive: true }) para crear la carpeta sin que lance error si ya existe.
+
+Recuerda que para leer el contenido de texto necesitas especificar el encoding (ej: 'utf-8').

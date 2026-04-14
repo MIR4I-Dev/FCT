@@ -1,0 +1,52 @@
+🛠️ Ejercicio: "DevTickets API"
+Vas a construir una API para gestionar tickets de soporte técnico. Los datos se guardarán en un archivo tickets.json.
+
+1. El Modelo de Datos (Zod)  DONE!
+Crea un esquema de validación con Zod para un "Ticket" que tenga:
+
+title: String (mínimo 5 caracteres).
+
+description: String (mínimo 10 caracteres).
+
+priority: Un enumerado (enum) que solo acepte: 'low', 'medium', 'high'.
+
+status: Opcional, por defecto 'open'. Valores: 'open', 'in-progress', 'closed'.
+
+tags: Un array de strings (opcional).
+
+2. Endpoints de Express (CRUD)
+GET /tickets: DONE!
+
+Debe permitir filtrar por priority (ej: /tickets?priority=high).
+
+Debe permitir filtrar por status.
+
+Si no hay filtros, devuelve todos.
+
+GET /tickets/:id: Busca un ticket por su UUID o ID numérico. DONE!
+
+POST /tickets: DONE!
+
+Valida los datos con Zod.
+
+Si falla, devuelve un 400 con los errores detallados.
+
+Si tiene éxito, guarda el ticket y devuelve un 201.
+
+PATCH /tickets/:id: DONE!   
+
+Permite actualización parcial (solo el status o solo la priority).
+
+Usa .partial() de Zod para validar solo los campos que vienen en el body.
+
+DELETE /tickets/:id: Elimina el ticket y devuelve un 204. DONE!
+
+3. Configuración Pro
+Habilita CORS para que solo tu futuro puerto de React (ej: http://localhost:5173) pueda acceder.
+
+Usa un middleware para deshabilitar la cabecera x-powered-by: Express (por seguridad).
+
+Separa las validaciones en un archivo aparte para mantener limpio tu index.js.
+
+💡 El Reto "Mente de Arquitecto"
+Intenta que tu servidor no se rompa si el archivo tickets.json no existe al arrancar. Debería crearlo vacío [] automáticamente.

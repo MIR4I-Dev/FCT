@@ -1,0 +1,26 @@
+Tu objetivo es crear una pequeña estructura de archivos que procese la información de un producto.
+
+Parte 1: CommonJS (La vieja escuela .js)
+Crea un archivo llamado calculadora.js.
+
+Crea una función que reciba un precio y un porcentaje de impuesto, y devuelva el total.
+
+Exporta esa función usando la sintaxis de CommonJS.
+
+Crea un archivo app.js que importe esa función y muestre en consola el precio final de un producto de 100€ con un 21% de IVA.
+
+Parte 2: ES Modules (La modernidad .mjs)
+Crea un archivo llamado formateador.mjs.
+
+Crea y exporta dos funciones distintas (Exportaciones Nombradas):
+
+capitalizar(texto): Pone la primera letra en mayúscula.
+
+agregarMoneda(valor): Devuelve el valor con el símbolo € al final.
+
+Crea un archivo main.mjs. Importa ambas funciones y úsalas para transformar el string "ratón" y el número 121 en algo como: "Producto: Ratón | Precio: 121€".
+
+💡 El reto extra (Nivel Pro)
+Intenta que tu archivo main.mjs (ESM) importe la función de calculadora.js (CJS).
+
+Nota mental: Recuerda que Node.js permite importar CommonJS desde ES Modules, pero hacerlo al revés es mucho más espinoso.

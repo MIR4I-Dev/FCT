@@ -1,0 +1,33 @@
+### Obtener todos los gadgets
+GET http://localhost:3000/gadgets
+### Obtener un gadget por id
+GET http://localhost:3000/gadgets/a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p7
+### Obtener gadgets por marca
+GET http://localhost:3000/gadgets?brand=Logitech
+### Obtener gadgets por categoría
+GET http://localhost:3000/gadgets?category=perifericos
+### Obtener gadgets por marca y categoría
+GET http://localhost:3000/gadgets?brand=Logitech&category=perifericos
+### Crear un gadget
+POST http://localhost:3000/gadgets
+Content-Type: application/json
+
+{
+    "name": "Keyboard",
+    "price": 10,
+    "stock": 10,
+    "brand": "Logitech",
+    "categories": ["perifericos"]
+}
+### Actualizar un gadget
+PATCH http://localhost:3000/gadgets/d1a2b3c4-e5f6-7g8h-9i0j-k1l2m3n4o5p6
+Content-Type: application/json
+
+{
+    "stock": 30,
+    "categories": ["perifericos"]
+}
+### Eliminar un gadget
+DELETE http://localhost:3000/gadgets/d1a2b3c4-e5f6-7g8h-9i0j-k1l2m3n4o5p6   
+### Ruta que no existe
+GET http://localhost:3000/gadgets/ruta-inexistente/hola/adios

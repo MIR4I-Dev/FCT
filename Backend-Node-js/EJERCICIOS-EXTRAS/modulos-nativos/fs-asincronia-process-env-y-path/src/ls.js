@@ -1,6 +1,5 @@
 const fs = require("node:fs/promises");
 const path = require("node:path");
-const pc = require("picocolors");
 
 // En la terminal pones node 8.ls-advanced.js y te lista el directorio actual, por eso el ?? '.'
 // Si pones node 8.ls-advanced.js y luego una ruta te lista esa ruta
@@ -28,13 +27,14 @@ async function getStats(directory, file) {
   }
   const isDirectory = stats.isDirectory();
   const fileType = isDirectory ? "d" : "-";
-  const fileSize = stats.size.toString().padStart(10); // Bytes
+  const fileSize = stats.size.toString(); // Bytes
   const fileModified = stats.mtime.toLocaleString();
-  return { fileType, file, fileSize, fileModified }; // Cada file se convierte en un objeto con su información
-}
-
-function formatRow(file) {
-  return `${pc.blue(file.fileType)} ${pc.green(file.file.padEnd(40))} ${pc.yellow(file.fileSize)} ${pc.cyan(file.fileModified)}`;
+  return {
+    "Tipo de fichero": fileType,
+    "Nombre del fichero": file,
+    "Tamaño del fichero": fileSize,
+    "Fecha de modificación": fileModified,
+  }; // Cada file se convierte en un objeto con su información
 }
 
 async function ls(directory) {
@@ -42,7 +42,8 @@ async function ls(directory) {
   // Map para obtener la información de cada archivo a la vez
   const filesPromise = files.map((file) => getStats(directory, file));
   const filesInfo = await Promise.all(filesPromise);
-  filesInfo.forEach((file) => console.log(formatRow(file)));
+  console.table(filesInfo);
 }
 
 ls(folder);
+console.log("Haciendo cosas mientras tanto...");

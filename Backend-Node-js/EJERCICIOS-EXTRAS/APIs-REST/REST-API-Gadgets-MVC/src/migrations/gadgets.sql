@@ -1,0 +1,30 @@
+DROP DATABASE IF EXISTS gadgets;
+CREATE DATABASE gadgets;
+USE gadgets;
+
+CREATE TABLE brand (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE gadget (
+  id CHAR(36) PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  price DECIMAL(10, 2) NOT NULL,
+  stock INT NOT NULL DEFAULT 0,
+  brand_id INT,
+  FOREIGN KEY (brand_id) REFERENCES brand(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE category (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE gadget_categories (
+  gadget_id CHAR(36),
+  category_id INT,
+  PRIMARY KEY(gadget_id, category_id),
+  FOREIGN KEY (gadget_id) REFERENCES gadget(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
