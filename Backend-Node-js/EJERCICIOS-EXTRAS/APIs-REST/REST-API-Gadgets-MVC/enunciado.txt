@@ -42,14 +42,61 @@ DELETE /products/:id: Elimina el producto y sus relaciones (usa la Transacción 
 
 PATCH /products/:id: Actualización parcial. Si se envía el array de categorías, aplica la técnica de "Borrar y Reemplazar".
 
-🎯 El "Giro" del ejercicio (El reto técnico)
-Para que no sea "más de lo mismo", añade esta regla de negocio en tu Controlador:
+4. Autenticación, JWT y OAuth2
 
-Regla de Alerta de Stock: En el GET /products, si un producto tiene un stock menor a 5, añade dinámicamente una propiedad al JSON de respuesta llamada low_stock: true.
+1. Preparación de la Base de Datos (Capa de Datos)
+Antes de tocar el código, asegúrate de que tu tabla users soporte ambos mundos (Local y OAuth2).
 
-Esto te ayudará a practicar cómo manipular los datos que vienen del Modelo antes de enviarlos al cliente a través del Controlador.
+Acción: Ejecuta el ALTER TABLE que comentamos (campos password como NULL, provider y provider_id).
 
-¿Por dónde empezar?
-Te sugiero que primero definas el Schema de Zod y luego el Modelo SQL (las tablas en PHPMyAdmin). Una vez tengas las tablas products, categories y la intermedia product_categories, el resto del código fluirá solo.
+Por qué: Si no lo haces ahora, el modelo de Passport fallará cuando intente insertar un usuario de Google sin contraseña.
 
-¿Quieres que te pase el código SQL para crear las tablas rápidamente o prefieres practicarlas tú en PHPMyAdmin?
+2. Actualización del Modelo de Usuario (Capa Model)
+Crea o actualiza models/mysql/user.js. Necesitas tres métodos fundamentales:
+
+create(data): Que use bcrypt para hashear la contraseña si el proveedor es 'local'.
+
+findByUsername(username): Para el login tradicional.
+
+findOrCreateOAuth({ provider, providerId, ... }): El método "todo en uno" para Passport.
+
+3. Middlewares de Seguridad (Capa de Lógica)
+Crea middlewares/auth.js. Antes de tener las rutas, necesitas las "aduanas".
+
+verifyToken: Este middleware debe intentar leer la cookie access_token.
+
+Tip Pro: Si la validación falla, en lugar de solo mandar un 401 JSON, haz un res.redirect('/login') ya que ahora usas vistas EJS.
+
+extractUser: Un middleware global que si el token es válido, ponga al usuario en res.locals.user para que tus cabeceras de EJS puedan decir "Hola, Juan" en cualquier página.
+
+4. Configuración de Estrategias (Passport & JWT)
+Configura Passport en un archivo separado (ej. config/passport.js) e impórtalo en tu app.js.
+
+Acción: Configura la GoogleStrategy. En el callback, usa el método findOrCreateOAuth de tu modelo.
+
+Acción: Define cómo generarás el JWT tras un login exitoso (ya sea local o por Google).
+
+5. Definición de Rutas y Controladores (Capa Controller/Routes)
+Divide tus rutas en dos grupos:
+
+auth.js: Contendrá /login, /register, /logout y los callbacks de Google.
+
+gadgets.js: Tus rutas actuales, pero ahora envueltas en tu middleware de protección.
+
+6. Creación de Vistas (Capa View)
+Ahora que los controladores ya pueden enviar datos, diseña los .ejs.
+
+login.ejs: Formulario POST a /auth/login y un enlace simple <a> a /auth/google.
+
+protected.ejs: Una vista que muestre los datos de req.user para confirmar que la persistencia funciona.
+
+El "Camino Crítico" de ejecución:
+Si quieres probar que todo va bien paso a paso, hazlo en este orden:
+
+Registro Local: Crea un usuario manualmente con un script o un test y comprueba que la contraseña se guarda hasheada en MySQL.
+
+Login Local: Logueate, verifica que se crea la cookie HttpOnly en el navegador.
+
+Protección: Intenta entrar a /protected. Si te echa al login, tu middleware funciona.
+
+OAuth2: Finalmente, configura Google. Al ser el paso más "ruidoso" (configurar credenciales en la consola de Google), es mejor tener todo lo anterior ya funcionando.

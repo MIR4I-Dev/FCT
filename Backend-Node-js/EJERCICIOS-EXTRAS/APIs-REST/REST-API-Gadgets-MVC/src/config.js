@@ -3,5 +3,3 @@ export const {
   SALT_ROUNDS = 10,
   JWT_SECRET = "this-is-an-awesome-secret-much-more-than-32-chars",
 } = process.env;
-
-export const __prod__ = process.env.NODE_ENV === "production";
