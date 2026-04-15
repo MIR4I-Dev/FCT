@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Protegido</title>
 </head>
 <body>
     <h1>Hola <%= user.username %></h1>
     <p>Este contenido está protegido por JWT</p>
-    <a href="/logout">Logout</a>
-    <a href="/gadgets">Gadgets</a>
+    <form action="/users/logout" method="POST" style="display: inline;">
+        <button type="submit">Logout</button>
+    </form>
+    <br>
+    <a href="/gadgets">Volver a Gadgets</a>
 </body>
 </html>

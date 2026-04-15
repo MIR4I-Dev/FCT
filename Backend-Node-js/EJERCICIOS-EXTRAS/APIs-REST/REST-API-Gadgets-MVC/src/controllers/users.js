@@ -70,6 +70,6 @@ export class UsersController {
       .clearCookie("access_token")
       .clearCookie("refresh_token")
       .status(200)
-      .json({ message: "Logout exitoso" });
+      .redirect("/login");
   };
 }
