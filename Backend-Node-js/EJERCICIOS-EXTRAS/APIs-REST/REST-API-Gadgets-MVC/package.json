@@ -4,10 +4,13 @@
     "cookie-parser": "^1.4.7",
     "cors": "2.8.6",
     "crypto": "^1.0.1",
+    "dotenv": "^17.4.2",
     "ejs": "^5.0.2",
     "express": "5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mysql2": "3.22.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth2": "^0.2.0",
     "zod": "4.3.6"
   },
   "name": "rest-api-gadgets-mvc",
@@ -15,7 +18,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch src/server/server-with-mysql.js"
+    "dev": "node --env-file=.env --watch src/server/server-with-mysql.js"
   },
   "type": "module",
   "keywords": [],

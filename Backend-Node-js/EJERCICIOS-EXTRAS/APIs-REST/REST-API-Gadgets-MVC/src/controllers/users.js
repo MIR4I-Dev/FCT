@@ -1,6 +1,6 @@
 import { validateUser } from "../schemas/users.js";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "../config.js";
+import { JWT_SECRET } from "../config/config.js";
 
 export class UsersController {
   constructor({ userModel }) {
@@ -63,6 +63,30 @@ export class UsersController {
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
+  };
+
+  googleCallback = async (req, res) => {
+    const { id, username } = req.user;
+    const token = jwt.sign({ id, username }, JWT_SECRET, { expiresIn: "15m" });
+    const refreshToken = jwt.sign({ id, username }, JWT_SECRET, {
+      expiresIn: "30d",
+    });
+
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 15 * 60 * 1000,
+      })
+      .cookie("refresh_token", refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+      })
+      .status(200)
+      .redirect("/"); // O .json({ user: req.user, message: "Login exitoso" }) si prefieres que el front maneje la redirección
   };
 
   logout = (req, res) => {

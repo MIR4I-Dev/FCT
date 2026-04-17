@@ -1,13 +1,5 @@
-import mysql from "mysql2/promise";
 import crypto from "crypto";
-
-const connection = await mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  port: 3306,
-  password: "",
-  database: "gadgets",
-});
+import { connection } from "../../config/config.js";
 
 export class GadgetModel {
   static async getAllGadgets({ brand, category }) {

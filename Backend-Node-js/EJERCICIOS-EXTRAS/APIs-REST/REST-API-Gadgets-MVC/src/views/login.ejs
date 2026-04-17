@@ -36,6 +36,9 @@
         <div class="link">
             ¿No tienes cuenta? <a href="/register">Regístrate aquí</a>
         </div>
+        <div class="link">
+            ¿Quieres iniciar sesión con Google? <a href="/users/google">Google</a>
+        </div>
     </div>
 
     <script>
@@ -59,7 +62,9 @@
                 const result = await res.json();
 
                 if (res.ok) {
-                    window.location.href = '/'; 
+                    setTimeout(() => {
+                        window.location.href = '/'; 
+                    }, 200); // 200ms de retraso para que le de tiempo a guardar la cookie
                 } else {
                     errorMsg.textContent = result.error || 'Error al iniciar sesión';
                     errorMsg.style.display = 'block';

@@ -10,6 +10,11 @@ CREATE TABLE users (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+ALTER TABLE users 
+  MODIFY password VARCHAR(100) NULL, -- NULL para usuarios de OAuth2
+  ADD COLUMN provider VARCHAR(20) DEFAULT 'local', -- 'local', 'google'
+  ADD COLUMN provider_id VARCHAR(100) UNIQUE NULL; -- El ID que te da Google
+
 CREATE TABLE brand (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE

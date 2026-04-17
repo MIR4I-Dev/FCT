@@ -6,11 +6,14 @@ import { verifyToken } from "../middlewares/verify-tokens.js";
 import { requireAuth } from "../middlewares/require-auth.js";
 import { CreateUsersRouter } from "../routes/users.js";
 import cookieParser from "cookie-parser";
-
-const PORT = process.env.PORT ?? 3000;
+import passport from "passport";
+import "../config/auth-strategies.js";
+import { PORT } from "../config/config.js";
 
 export const createApp = ({ gadgetModel, userModel }) => {
   const app = express();
+
+  app.use(passport.initialize());
   app.use(json());
   app.use(cookieParser());
   app.set("view engine", "ejs");
