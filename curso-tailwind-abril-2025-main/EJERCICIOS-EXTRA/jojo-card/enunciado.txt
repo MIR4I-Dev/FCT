@@ -1,0 +1,17 @@
+🏆 Tu Desafío Final: El "Stand Proud Profile"
+Tu misión es recrear esta interfaz visual usando solo un archivo index.html, aplicando todo el 80/20 de Tailwind que ya dominas.
+
+Especificaciones Técnicas (The Requirements):
+Layout (Estructura): Usa una estructura híbrida de Flex y Grid. La tarjeta debe tener un "Vento" feel (cajas limpias y jerárquicas).
+
+Visual Premium: Aplica ese mask radial sobre la foto del Stand (puedes usar el boceto como referencia para la máscara circular) y un gradiente sutil que vaya con la estética del personaje (ej. púrpura para Star Platinum, oro para The World).
+
+Interactividad (Group Hover): Al pasar el ratón sobre la tarjeta entera (el padre group), los iconos de las habilidades (como "Time Stop") deben animarse sutilmente o cambiar de color, y la foto debe tener un efecto de "escala" sutil.
+
+Tematización (Theming): No uses colores por defecto (bg-blue-500). Define tus propias variables de color personalizados (star-platinum-purple, the-world-gold) en tu configuración de @theme (para Tailwind v4).
+
+Tipografía: Importa y usa una fuente WOFF2 personalizada para el nombre del Stand, y otra más profesional para los textos de las habilidades.
+
+Responsividad: Asegúrate de usar breakpoints. En móvil debe verse una lista compacta de habilidades, y en escritorio debe desplegarse en el diseño de Grid que ves en el boceto.
+
+¿Por qué este ejercicio? Porque una vez que lo termines, esta tarjeta será el componente <StandCard /> perfecto para cuando pases a React. En lugar de copiar y pegar clases en HTML, envolverás este diseño en una función de React para mostrar tus Stands de la base de datos dinámicamente.
