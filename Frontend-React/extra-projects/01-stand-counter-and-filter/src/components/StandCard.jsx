@@ -74,12 +74,12 @@ export function StandCard({ stand }) {
             </main>
             <footer className="w-full mt-4">
                 <button
-                    className={`w-full cursor-pointer ${styles.primaryColor} hover:brightness-125 ${styles.masterColor} font-bold py-2 px-4 rounded-xl transition-all duration-300 mb-4`}
+                    className={`w-full cursor-pointer border-2 ${styles.border} hover:brightness-125 ${styles.masterColor} bg-black/50 font-bold py-2 px-4 rounded-xl transition-all duration-300 mb-4`}
                     onClick={handleClick}>
                     Level {level >= 10 ? `${level} - Requiem` : level}
                 </button>
                 <button
-                    className={`w-full cursor-pointer ${styles.tertiaryColor} hover:brightness-125 ${styles.masterColor} font-bold py-2 px-4 rounded-xl transition-all duration-300 mb-4`}
+                    className={`w-full cursor-pointer border-2 ${styles.border} hover:brightness-125 ${styles.masterColor} bg-black/50 font-bold py-2 px-4 rounded-xl transition-all duration-300 mb-4`}
                     onClick={handleGetJson}>
                     Get JSON
                 </button>

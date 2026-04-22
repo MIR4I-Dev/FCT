@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <BlackOverlay />
-      <main className="relative z-10 w-full flex flex-col items-center">
+      <main className="relative z-10 w-full h-full max-h-full flex flex-col items-center overflow-x-hidden">
         <Header handleClick={handleClick} />
         <CardSection STANDS_DATA={filteredStands} />
         <Footer filter={partFilter} handleClick={handleClick} />
