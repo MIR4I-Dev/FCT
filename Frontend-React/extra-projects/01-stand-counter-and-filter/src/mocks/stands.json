@@ -1,0 +1,115 @@
+[
+    {
+        "id": 2,
+        "name": "Star Platinum",
+        "image": "/img/star-platinum-3.webp",
+        "master": "Kujo Jotaro",
+        "part": 3,
+        "description": "Star Platinum is the iconic, humanoid Stand of Jotaro Kujo in JoJo's Bizarre Adventure: Stardust Crusaders. Renowned for its overwhelming physical strength, incredible speed, and extreme precision, it is a close-range powerhouse (range of ~2 meters) with A-rank stats in almost all categories. It later develops the 'Time Stop' ability, becoming Star Platinum: The World",
+        "stats": {
+            "destructivePower": "A",
+            "speed": "A",
+            "range": "C",
+            "durability": "A",
+            "precision": "A",
+            "developmentPotential": "A"
+        },
+        "abilities": [
+            {
+                "id": 1,
+                "name": "Super Strength & Speed"
+            },
+            {
+                "id": 2,
+                "name": "Precision"
+            },
+            {
+                "id": 3,
+                "name": "Enhanced Senses/Eyesight"
+            },
+            {
+                "id": 4,
+                "name": "Star Finger"
+            },
+            {
+                "id": 5,
+                "name": "Super Breath"
+            },
+            {
+                "id": 6,
+                "name": "Star Platinum: The World"
+            }
+        ],
+        "level": 1
+    },
+    {
+        "id": 1,
+        "name": "Killer Queen",
+        "image": "/img/killer-queen-4.png",
+        "master": "Yoshikage Kira",
+        "part": 4,
+        "description": "Killer Queen is the primary Stand of Yoshikage Kira in JoJo's Bizarre Adventure: Diamond is Unbreakable. It is a short-range humanoid Stand with a light pink, cat-like appearance that specializes in erasing targets by turning anything it touches into a bomb. It features three distinct explosive abilities—primary bombs, Sheer Heart Attack, and Bites the Dust—designed for silent assassination.",
+        "stats": {
+            "destructivePower": "A",
+            "speed": "B",
+            "range": "C",
+            "durability": "B",
+            "precision": "A",
+            "developmentPotential": "A"
+        },
+        "abilities": [
+            {
+                "id": 1,
+                "name": "Primary Bomb (Bomb Transmutation)"
+            },
+            {
+                "id": 2,
+                "name": "Second Bomb: Sheer Heart Attack"
+            },
+            {
+                "id": 3,
+                "name": "Third Bomb: Bites the Dust (BTD)"
+            },
+            {
+                "id": 4,
+                "name": "Fourth Bomb (Stray Cat Combination)"
+            }
+        ],
+        "level": 1
+    },
+    {
+        "id": 5,
+        "name": "Gold Experience",
+        "image": "/img/gold-experience-5.webp",
+        "master": "Giorno Giovanna",
+        "part": 5,
+        "description": "Gold Experience is Giorno Giovanna's versatile, short-range Stand in JoJo's Bizarre Adventure: Golden Wind, specializing in creating and manipulating life. It converts inorganic objects into living organisms and can heal injuries by replacing damaged body parts. The Stand can also reflect damage back to attackers and cause over-acceleration of senses.",
+        "stats": {
+            "destructivePower": "A",
+            "speed": "B",
+            "range": "C",
+            "durability": "B",
+            "precision": "A",
+            "developmentPotential": "A"
+        },
+        "abilities": [
+            {
+                "id": 1,
+                "name": "Life Creation"
+            },
+            {
+                "id": 2,
+                "name": "Healing (Body Part Replacement)"
+            },
+            {
+                "id": 3,
+                "name": "Damage Reflection"
+            },
+            {
+                "id": 4,
+                "name": "Over-Acceleration of Senses (Life Overdose)"
+            }
+        ],
+        "level": 1
+    }
+]

@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* Personalizar barra de scroll */
+
+/* Personalización para Chrome, Safari y Edge */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #4d4c4c;
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #9a9a9a;
+}
+
+/* Soporte para Firefox */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #4d4c4c rgba(255, 255, 255, 0.05);
+}
+
+/* Optimización para fondos fijos en móviles */
+.bg-fixed-optimized {
+  position: relative;
+}
+
+.bg-fixed-optimized::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--background-image-jojo);
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  will-change: transform;
+  /* Forzar aceleración por hardware */
+
+  /* OPTIMIZACIÓN EXTREMA PARA MÓVILES ANTIGUOS */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  /* Al añadir translate3d, el móvil deja de usar el procesador principal para el fondo y usa el chip gráfico, que es mucho más eficiente para imágenes fijas. */
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* En móviles, el fondo se mueve con el scroll (estándar) */
+.bg-fixed-optimized::before {
+  position: absolute;
+  height: 100%;
+}
+
+/* Solo en pantallas grandes activamos el efecto fixed */
+@media (min-width: 1024px) {
+  .bg-fixed-optimized::before {
+    position: fixed;
+  }
+}
+
+@theme {
+  /* Colores de la parte 4 */
+  --color-part-4-primary: #212021;
+  --color-part-4-secondary: #1c141f;
+  --color-part-4-tertiary: #3f1b4a;
+  --color-part-4-master: #c084fc;
+
+  /* Colores de la parte 3 */
+  --color-part-3-primary: #0a192f;
+  --color-part-3-secondary: #112240;
+  --color-part-3-tertiary: #1d4ed8;
+  --color-part-3-master: #38bdf8;
+
+  /* Colores de la parte 5 */
+  --color-part-5-primary: #2d2412;
+  --color-part-5-secondary: #3d2b08;
+  --color-part-5-tertiary: #b45309;
+  --color-part-5-master: #fbbf24;
+
+  /* Tipografía */
+  --font-family-inter: 'Inter', system-ui, sans-serif;
+
+  /* Texto */
+  --color-text-primary: #eeeeee;
+
+  /* Imagen de fondo */
+  --background-image-jojo: url("/img/background.png");
+
+  /* Colores de texto para stats */
+  --color-color-power: #fb923c;
+  /* orange-400 */
+  --color-color-speed: #facc15;
+  /* yellow-400 */
+  --color-color-range: #4ade80;
+  /* green-400 */
+  --color-color-durability: #60a5fa;
+  /* blue-400 */
+  --color-color-precision: #f87171;
+  /* red-400 */
+  --color-color-potential: #c084fc;
+  /* purple-400 */
+
+
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+}
