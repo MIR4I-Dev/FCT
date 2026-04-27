@@ -13,18 +13,18 @@
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb {
-  background: #4d4c4c;
+  background: #e0a91f;
   border-radius: 10px;
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  background: #9a9a9a;
+  background: #e0a91f;
 }
 
 /* Soporte para Firefox */
 .overflow-y-auto {
   scrollbar-width: thin;
-  scrollbar-color: #4d4c4c rgba(255, 255, 255, 0.05);
+  scrollbar-color: #e0a91f rgba(255, 255, 255, 0.05);
 }
 
 /* Optimización para fondos fijos en móviles */
@@ -59,6 +59,10 @@
 .bg-fixed-optimized::before {
   position: absolute;
   height: 100%;
+}
+
+body {
+  cursor: url('/cursor.cur'), auto;
 }
 
 /* Solo en pantallas grandes activamos el efecto fixed */
@@ -115,7 +119,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/inter.woff2') format('woff2');
+  src: url('/fonts/inter.woff2') format('woff2');
   font-style: normal;
   font-weight: 200 700;
   font-display: swap;

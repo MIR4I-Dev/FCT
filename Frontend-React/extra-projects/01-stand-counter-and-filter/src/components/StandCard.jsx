@@ -65,7 +65,7 @@ export function StandCard({ stand }) {
                         <span className="font-bold absolute bottom-2 right-2 text-color-potential">{stats.developmentPotential}</span>
                     </div>
                 </div>
-                <h3 className={`text-center font-bold border-b ${styles.border} opacity-50 pb-2 mb-4`}>
+                <h3 className={`text-center font-bold border-b ${styles.border} ${styles.masterColor} opacity-50 pb-2 mb-4`}>
                     Abilities
                 </h3>
                 <ul className={`text-sm space-y-2 text-text-primary list-disc list-inside border-b ${styles.border} opacity-50 pb-4 grow-1 max-h-30 overflow-y-auto text-balance pr-2`}>

@@ -4,7 +4,7 @@ export function Header({ handleClick }) {
     return (
         <header className="flex flex-col items-center gap-4 min-w-dvw justify-center">
             <h1
-                className="text-2xl md:text-3xl lg:text-4xl text-center text-balance bg-black/70 text-yellow-500 border-4 w-[90%] md:w-[60vw] border-yellow-500 rounded-full p-3 mx-auto my-4 tracking-wider font-inter">
+                className="text-2xl md:text-3xl lg:text-4xl text-center text-balance text-yellow-500 w-[90%] md:w-[60vw] p-3 mx-auto my-4 tracking-wider font-inter">
                 JoJo's Bizarre Adventure API<br />JoJoAPI
             </h1>
             <FollowMouse />

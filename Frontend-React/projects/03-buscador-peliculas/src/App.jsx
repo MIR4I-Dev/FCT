@@ -13,13 +13,6 @@ export function App() {
   const handleSubmit = (event) => {
     event.preventDefault()
     getMovies({ search })
-    /*FORMA NO CONTROLADA
-    const fields = Object.fromEntries(new window.FormData(event.target))
-
-    // Con fields podría hacer validaciones ya toma TODOS los campos con name. Esta es una forma no controlada de hacerlo (más óptima)
-    if (!fields.query) return
-    */
-
   }
 
   const handleSort = () => {
