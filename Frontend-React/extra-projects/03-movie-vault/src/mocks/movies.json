@@ -1,0 +1,52 @@
+{
+    "movies": [
+        {
+            "id": "m1",
+            "title": "Inception",
+            "genre": "Sci-Fi",
+            "year": 2010,
+            "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+            "description": "Un ladrón que roba secretos corporativos a través de la tecnología de compartir sueños."
+        },
+        {
+            "id": "m2",
+            "title": "The Dark Knight",
+            "genre": "Action",
+            "year": 2008,
+            "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
+            "description": "Cuando la amenaza conocida como el Joker emerge, Batman debe aceptar uno de los mayores desafíos."
+        },
+        {
+            "id": "m3",
+            "title": "Interstellar",
+            "genre": "Sci-Fi",
+            "year": 2014,
+            "poster": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+            "description": "Un equipo de exploradores viaja a través de un agujero de gusano en el espacio para asegurar la supervivencia de la humanidad."
+        },
+        {
+            "id": "m4",
+            "title": "Pulp Fiction",
+            "genre": "Crime",
+            "year": 1994,
+            "poster": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjA4XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "description": "Las vidas de dos sicarios, un boxeador y la esposa de un gángster se entrelazan en cuatro historias de violencia."
+        },
+        {
+            "id": "m5",
+            "title": "The Matrix",
+            "genre": "Sci-Fi",
+            "year": 1999,
+            "poster": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+            "description": "Un hacker descubre la verdadera naturaleza de su realidad y su papel en la guerra contra sus controladores."
+        },
+        {
+            "id": "m6",
+            "title": "Spirited Away",
+            "genre": "Animation",
+            "year": 2001,
+            "poster": "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctZG2Ni00YjLlLWE4YzItZTVlZDBmOWVlOWXmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+            "description": "Una niña de 10 años vaga por un mundo gobernado por dioses, brujas y espíritus."
+        }
+    ]
+}
