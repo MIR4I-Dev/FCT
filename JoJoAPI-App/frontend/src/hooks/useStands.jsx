@@ -1,38 +1,20 @@
-import { useState, useEffect } from "react";
 import { getStands } from "../services/getStands.js";
+import { useQuery } from "@tanstack/react-query";
 
 export function useStands(filters) {
-    const [standsData, setStandsData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [paginationInfo, setPaginationInfo] = useState({
-        nextPage: null,
-        prevPage: null,
-        totalPages: 0
+
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ["stands", filters],
+        queryFn: () => getStands(filters),
+        placeholderData: (previousData) => previousData,
     });
 
-    const { part, search, order, page, limit } = filters;
-
-    useEffect(() => {
-        const fetchStands = async () => {
-            try {
-                setLoading(true);
-                const data = await getStands({ part, search, order, page, limit });
-                setStandsData(data.data || []);
-                setPaginationInfo({
-                    nextPage: data.nextPage,
-                    prevPage: data.prevPage,
-                    totalPages: data.totalPages || 0
-                });
-            } catch (err) {
-                setError(err.message || "An error occurred while obtaining the stands");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchStands();
-    }, [part, search, order, page, limit]);
-
-    return { standsData, loading, error, ...paginationInfo };
+    return {
+        data: data?.data || [],
+        nextPage: data?.nextPage || null,
+        prevPage: data?.prevPage || null,
+        totalPages: data?.totalPages || 0,
+        isLoading,
+        error: isError ? (error?.message || "An error occurred") : null,
+    };
 }

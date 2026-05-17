@@ -1,6 +1,6 @@
+import { useCallback, useEffect, useState } from "react";
 import { useFilters } from "../hooks/useFilters.jsx";
 import debounce from "just-debounce-it";
-import { useCallback, useEffect, useState } from "react";
 
 export function Filters() {
     const { filters, changeSearch, changePart, changeOrder, resetFilters } = useFilters();

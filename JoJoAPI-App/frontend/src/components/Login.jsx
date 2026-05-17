@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { useAuth } from "../hooks/useAuth.jsx";
@@ -6,10 +6,25 @@ import { API_URL } from "../config/config.js";
 import { BlackOverlay } from "./BlackOverlay.jsx";
 import { Header } from "./Header.jsx";
 
+
 export function Login() {
     const { login, loading, setLoading } = useAuth();
     const navigate = useNavigate();
     const [error, setError] = useState(null);
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const goOnline = () => setIsOnline(true);
+        const goOffline = () => setIsOnline(false);
+
+        window.addEventListener('online', goOnline);
+        window.addEventListener('offline', goOffline);
+
+        return () => {
+            window.removeEventListener('online', goOnline);
+            window.removeEventListener('offline', goOffline);
+        };
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,7 +47,7 @@ export function Login() {
 
             if (res.ok) {
                 login(result.user);
-                navigate("/");
+                navigate("/stands");
             } else {
                 setError(result.error || "Invalid credentials");
             }
@@ -57,7 +72,7 @@ export function Login() {
 
             if (res.ok) {
                 login(result.user);
-                navigate("/");
+                navigate("/stands");
             } else {
                 setError(result.error || "Error authenticating with Google");
             }
@@ -73,10 +88,16 @@ export function Login() {
             <Header />
             <BlackOverlay />
             <main className="min-h-screen w-full flex items-center justify-center p-4 pt-32">
-                <div className="bg-black/60 border-4 border-yellow-500 p-8 rounded-2xl w-full max-w-[500px] text-white shadow-[0_0_50px_rgba(234,179,8,0.2)] backdrop-blur-md">
+                <div className="bg-black/60 border-4 border-yellow-500 p-8 rounded-2xl w-[400px] text-white shadow-[0_0_50px_rgba(234,179,8,0.2)] backdrop-blur-md">
                     <h1 className="text-3xl font-black text-center text-yellow-500 tracking-wider mb-6 font-inter">
                         LOG IN
                     </h1>
+
+                    {!isOnline && (
+                        <p className="text-red-500 bg-red-500/10 p-2 rounded-lg text-center animate-pulse">
+                            Conexión inestable. Comprueba tu acceso a internet.
+                        </p>
+                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="flex flex-col gap-1">
@@ -119,7 +140,7 @@ export function Login() {
                         <div className="grow border-t border-zinc-700"></div>
                     </div>
 
-                    <div className="flex justify-center w-full">
+                    <div className={`flex justify-center w-full ${!isOnline ? "opacity-50 pointer-events-none" : ""}`}>
                         <GoogleLogin
                             onSuccess={handleGoogleSuccess}
                             onError={() => setError("Failed to login with Google")}

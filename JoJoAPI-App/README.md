@@ -1,4 +1,4 @@
-# ✨ JoJo's Stand-Dex Fullstack
+# ✨ JoJo Stats Application
 
 Un proyecto fullstack diseñado para visualizar las estadísticas de los Stands de *JoJo's Bizarre Adventure* de forma estética, clara y moderna. A diferencia de las wikis tradicionales, este proyecto prioriza la experiencia visual y la legibilidad de los atributos de cada Stand.
 
@@ -12,10 +12,10 @@ Un proyecto fullstack diseñado para visualizar las estadísticas de los Stands 
 
 ### 🔍 Filtros y Navegación
 
-- **Filtrado por Partes**: Selector para segmentar Stands según las partes animadas de la historia (por ahora) (desde Stardust Crusaders hasta Stone Ocrean).
+- **Filtrado por Partes**: Selector para segmentar Stands según las partes animadas de la historia (por ahora) (desde Stardust Crusaders hasta Stone Ocean).
 - **Búsqueda en Tiempo Real**: Input de texto para localizar Stands por nombre.
 - **Ordenación Dinámica**: Checkbox para alternar entre orden ascendente y descendente.
-- **Scroll Infinito**: Paginación fluida y automática para una navegación sin interrupciones.
+- **Paginación numérica**: Paginación para una navegación sin interrupciones.
 
 ### 🔐 Sistema de Usuarios y Feedback
 
@@ -30,7 +30,6 @@ Un proyecto fullstack diseñado para visualizar las estadísticas de los Stands 
 - **Backend**: [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/)
 - **Base de Datos**: [MySQL](https://www.mysql.com/)
 - **Autenticación**: [Passport.js](https://www.passportjs.org/) (Google Strategy) + [JWT](https://jwt.io/) (Access & Refresh Tokens)
-- **Despliegue**: [Netlify](https://www.netlify.com/)
 
 ## 🗄️ Estructura de la Base de Datos
 
