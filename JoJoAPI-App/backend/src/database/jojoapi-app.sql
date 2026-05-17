@@ -61,7 +61,7 @@ VALUES (
         'A',
         'A',
         'A',
-        'https://static.jojowiki.com/images/thumb/3/36/latest/20260311185811/Star_Platinum_DU_Infobox_Manga.png/600px-Star_Platinum_DU_Infobox_Manga.png'
+        'https://static.jojowiki.com/images/thumb/2/2d/latest/20210316191453/Star_Platinum_SC_Infobox_Manga.png/1200px-Star_Platinum_SC_Infobox_Manga.png'
     ),
     (
         2,
@@ -215,7 +215,7 @@ VALUES (
         'B',
         'C',
         'A',
-        'https://static.wikia.nocookie.net/jojo/images/f/f7/Echoes.png/revision/latest?cb=20160623225315&path-prefix=es'
+        'https://static.wikia.nocookie.net/jojo/images/5/55/Echoes_Act2_color.png/revision/latest/scale-to-width/360?cb=20161130211225&path-prefix=es'
     ),
     (
         13,
@@ -341,7 +341,7 @@ VALUES (
         'C',
         'E',
         'D',
-        'https://static.wikia.nocookie.net/jojo/images/0/0f/MoodyBlues.png/revision/latest?cb=20170701223950'
+        'https://static.jojowiki.com/images/thumb/9/93/latest/20230520124240/Moody_Blues_Infobox_Manga.png/800px-Moody_Blues_Infobox_Manga.png'
     ),
     (
         23,

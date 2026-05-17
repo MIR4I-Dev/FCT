@@ -21,6 +21,8 @@ export const CreateUsersRouter = ({ userModel }) => {
     usersController.googleCallback,
   );
 
+  router.post("/google/callback", usersController.googleOneTap);
+  router.get("/me", requireAuth, usersController.me);
   router.post("/register", usersController.register);
   router.post("/login", usersController.login);
   router.post("/logout", requireAuth, usersController.logout);

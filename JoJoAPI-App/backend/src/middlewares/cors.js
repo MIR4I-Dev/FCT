@@ -17,4 +17,5 @@ export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) =>
         callback(new Error("Not allowed by CORS"));
       }
     },
+    credentials: true,
   });

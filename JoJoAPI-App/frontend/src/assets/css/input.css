@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* Personalizar barra de scroll */
+
+/* Personalización para Chrome, Safari y Edge */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #e0a91f;
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #e0a91f;
+}
+
+/* Soporte para Firefox */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #e0a91f rgba(255, 255, 255, 0.05);
+}
+
+/* Optimización para fondos fijos en móviles */
+.bg-fixed-optimized {
+  position: relative;
+}
+
+.bg-fixed-optimized::before {
+  content: "";
+  position: fixed;
+  /* Siempre fijo */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/background.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: translate3d(0, 0, 0);
+}
+
+body {
+  cursor: url('/cursor.cur'), auto;
+}
+
+/* Solo en pantallas grandes activamos el efecto fixed */
+@media (min-width: 1024px) {
+  .bg-fixed-optimized::before {
+    position: fixed;
+  }
+}
+
+@theme {
+  /* Colores de la parte 4 */
+  --color-part-4-primary: #212021;
+  --color-part-4-secondary: #1c141f;
+  --color-part-4-tertiary: #3f1b4a;
+  --color-part-4-master: #c084fc;
+
+  /* Colores de la parte 3 */
+  --color-part-3-primary: #0a192f;
+  --color-part-3-secondary: #112240;
+  --color-part-3-tertiary: #1d4ed8;
+  --color-part-3-master: #38bdf8;
+
+  /* Colores de la parte 5 */
+  --color-part-5-primary: #2d2412;
+  --color-part-5-secondary: #3d2b08;
+  --color-part-5-tertiary: #b45309;
+  --color-part-5-master: #fbbf24;
+
+  /* Colores de la parte 6 */
+  --color-part-6-primary: #0a1915;
+  --color-part-6-secondary: #173f27;
+  --color-part-6-tertiary: #245437;
+  --color-part-6-master: #348c59;
+
+
+  /* Tipografía */
+  --font-family-inter: 'Inter', system-ui, sans-serif;
+
+  /* Texto */
+  --color-text-primary: #eeeeee;
+
+  /* Imagen de fondo */
+  --background-image-jojo: url("../img/background.png");
+
+  /* Colores de texto para stats */
+  --color-color-power: #fb923c;
+  /* orange-400 */
+  --color-color-speed: #facc15;
+  /* yellow-400 */
+  --color-color-range: #4ade80;
+  /* green-400 */
+  --color-color-durability: #60a5fa;
+  /* blue-400 */
+  --color-color-precision: #f87171;
+  /* red-400 */
+  --color-color-potential: #c084fc;
+  /* purple-400 */
+
+
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.8s infinite;
+  content: '';
+}

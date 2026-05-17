@@ -27,7 +27,7 @@ export const verifyToken = (req, res, next) => {
       const data = jwt.verify(refreshToken, JWT_SECRET);
 
       const newAccessToken = jwt.sign(
-        { id: data.id, email: data.email },
+        { id: data.id, email: data.email, username: data.username },
         JWT_SECRET,
         { expiresIn: "15m" },
       );

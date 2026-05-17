@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server/server-with-mysql.js",
   "scripts": {
-    "dev": "nodemon --env-file=.env --watch src/server/server-with-mysql.js"
+    "dev": "node --env-file=.env --watch src/server/server-with-mysql.js"
   },
   "type": "module",
   "keywords": [],
@@ -18,6 +18,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "google-auth-library": "^10.6.2",
     "jsonwebtoken": "^9.0.3",
     "mysql2": "^3.22.3",
     "passport": "^0.7.0",

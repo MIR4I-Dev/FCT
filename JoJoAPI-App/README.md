@@ -12,7 +12,7 @@ Un proyecto fullstack diseñado para visualizar las estadísticas de los Stands 
 
 ### 🔍 Filtros y Navegación
 
-- **Filtrado por Partes**: Selector para segmentar Stands según la parte de la historia (desde Stardust Crusaders hasta The JOJOLANDS).
+- **Filtrado por Partes**: Selector para segmentar Stands según las partes animadas de la historia (por ahora) (desde Stardust Crusaders hasta Stone Ocrean).
 - **Búsqueda en Tiempo Real**: Input de texto para localizar Stands por nombre.
 - **Ordenación Dinámica**: Checkbox para alternar entre orden ascendente y descendente.
 - **Scroll Infinito**: Paginación fluida y automática para una navegación sin interrupciones.
