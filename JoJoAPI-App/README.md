@@ -1,47 +1,49 @@
 # ✨ JoJo Stats Application
 
-Un proyecto fullstack diseñado para visualizar las estadísticas de los Stands de *JoJo's Bizarre Adventure* de forma estética, clara y moderna. A diferencia de las wikis tradicionales, este proyecto prioriza la experiencia visual y la legibilidad de los atributos de cada Stand.
+A full-stack project designed to showcase the statistics of Stands from *JoJo's Bizarre Adventure* in a stylish, clear, and modern way. Unlike traditional wikis, this project prioritizes visual experience and the readability of each Stand’s attributes.
 
-## 🚀 Características Principales
+## 🚀 Main Features
 
-### 📊 Visualización de Stands
+### 📊 Stand Visualization
 
-- **Catálogo Inicial**: Muestra a los protagonistas y antagonistas de cada parte de la serie.
-- **Información Detallada**: Cada tarjeta incluye nombre, usuario, descripción, parte de origen y un panel visual de estadísticas (Power, Speed, Range, etc.).
-- **Diseño Estético**: Interfaz optimizada para evitar tablas confusas, facilitando la lectura de los "Stand Stats".
+* **Initial Catalog**: Displays the protagonists and antagonists from each part of the series.
+* **Detailed Information**: Each card includes the Stand’s name, user, description, originating part, and a visual statistics panel (Power, Speed, Range, etc.).
+* **Aesthetic Design**: An interface optimized to avoid confusing tables, making Stand Stats easier and more enjoyable to read.
 
-### 🔍 Filtros y Navegación
+### 🔍 Filters and Navigation
 
-- **Filtrado por Partes**: Selector para segmentar Stands según las partes animadas de la historia (por ahora) (desde Stardust Crusaders hasta Stone Ocean).
-- **Búsqueda en Tiempo Real**: Input de texto para localizar Stands por nombre.
-- **Ordenación Dinámica**: Checkbox para alternar entre orden ascendente y descendente.
-- **Paginación numérica**: Paginación para una navegación sin interrupciones.
+* **Part Filtering**: Allows users to filter Stands by the animated parts of the story (currently from *Stardust Crusaders* to *Stone Ocean*).
+* **Real-Time Search**: Text input for quickly finding Stands by name.
+* **Dynamic Sorting**: Checkbox to switch between ascending and descending order.
+* **Numeric Pagination**: Smooth pagination system for uninterrupted navigation.
 
-### 🔐 Sistema de Usuarios y Feedback
+### 🔐 User System and Feedback
 
-- **Autenticación Híbrida**:
-  - Registro e inicio de sesión local (User/Password).
-  - Integración con **Google OAuth2** para un acceso rápido.
-- **Sugerencias**: Los usuarios autenticados pueden enviar propuestas de mejora para la plataforma.
+* **Hybrid Authentication**:
 
-## 🛠️ Stack Tecnológico
+  * Local registration and login (Username/Password).
+  * **Google OAuth2** integration for quick access.
+* **Suggestions System**: Authenticated users can submit improvement suggestions for the platform.
 
-- **Frontend**: [React](https://reactjs.org/) + [Tailwind CSS](https://tailwindcss.com/)
-- **Backend**: [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/)
-- **Base de Datos**: [MySQL](https://www.mysql.com/)
-- **Autenticación**: [Passport.js](https://www.passportjs.org/) (Google Strategy) + [JWT](https://jwt.io/) (Access & Refresh Tokens)
+## 🛠️ Tech Stack
 
-## 🗄️ Estructura de la Base de Datos
+* **Frontend**: [React](https://react.dev/) + [Tailwind CSS](https://tailwindcss.com/)
+* **Backend**: [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/)
+* **Database**: [MySQL](https://www.mysql.com/)
+* **Authentication**: [Passport.js](https://www.passportjs.org/) (Google Strategy) + [JWT](https://jwt.io/) (Access & Refresh Tokens)
 
-El sistema cuenta actualmente con tres tablas principales:
+## 🗄️ Database Structure
 
-1. `stands`: Almacena la información técnica, descriptiva y estadística de cada entidad.
-2. `users`: Gestiona los perfiles locales y vinculados mediante Google.
-3. `submissions`: Recopila las sugerencias enviadas por la comunidad.
+The system currently contains three main tables:
 
-## 🎨 Valor Añadido
+1. `stands`: Stores the technical, descriptive, and statistical information for each entity.
+2. `users`: Manages both local accounts and Google-linked profiles.
+3. `submissions`: Collects suggestions submitted by the community.
 
-El corazón de este proyecto es la **estética**. Mientras que otros sitios utilizan tablas de datos densas, este proyecto transforma esos datos en componentes visuales intuitivos, permitiendo que cualquier fan de JoJo identifique el potencial de un Stand de un solo vistazo.
+## 🎨 Added Value
+
+The core of this project is its **aesthetic approach**. While other websites rely on dense data tables, this project transforms those statistics into intuitive visual components, allowing any JoJo fan to instantly recognize a Stand’s potential at a glance.
 
 ---
-Producido con el poder de un Stand de tipo **Fullstack**.
+
+Powered by the strength of a **Full-Stack-type Stand**.
