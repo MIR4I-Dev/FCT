@@ -4,6 +4,7 @@ import { useFilters } from "../hooks/useFilters.jsx";
 import { Pagination } from "./Pagination.jsx";
 import { Filters } from './Filters.jsx'
 import { useStands } from "../hooks/useStands.jsx";
+import { PaginationSkeleton } from "./PaginationSkeleton.jsx";
 
 export function CardSection() {
     const { filters } = useFilters();
@@ -16,7 +17,12 @@ export function CardSection() {
         <>
             <div className="p-4 mt-28 text-white">
                 <Filters />
-                <Pagination />
+
+                {isLoading ? (
+                    <PaginationSkeleton />
+                ) : (
+                    <Pagination />
+                )}
 
                 {data.length === 0 && !isLoading && (
                     <p className="text-yellow-500 text-center">No stands found.</p>
