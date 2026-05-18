@@ -45,7 +45,8 @@ export class StandController {
       });
 
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      console.error("Error in getAllStands:", error);
+      res.status(500).json({ error: error.message || error.toString() });
     }
   };
 }

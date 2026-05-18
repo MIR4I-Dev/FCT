@@ -19,7 +19,8 @@ export class UsersController {
       if (!user) return res.status(409).json({ error: "User already exists" });
       res.status(201).json({ user });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      console.error("Error in register:", error);
+      res.status(500).json({ error: error.message || error.toString() });
     }
   };
 
@@ -60,7 +61,8 @@ export class UsersController {
         .status(200)
         .json({ user, message: "Login successful" });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      console.error("Error in login:", error);
+      res.status(500).json({ error: error.message || error.toString() });
     }
   };
 
