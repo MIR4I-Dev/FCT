@@ -34,8 +34,8 @@ export function CardSection() {
                             <StandCardSkeleton key={index} />
                         ))
                     ) : (
-                        data.map((stand) => (
-                            <StandCard key={stand.id} stand={stand} />
+                        data.map((stand, index) => (
+                            <StandCard key={stand.id} stand={stand} index={index} />
                         ))
                     )}
                 </section>

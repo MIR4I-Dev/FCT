@@ -1,6 +1,6 @@
 import { PART_STYLES } from '../constants.js';
 
-export function StandCard({ stand }) {
+export function StandCard({ stand, index }) {
     const {
         name,
         origin_part: part,
@@ -22,7 +22,9 @@ export function StandCard({ stand }) {
             className={`bg-gradient-to-br ${styles?.gradient} text-text-primary flex flex-col items-center relative h-full w-full max-w-sm mx-auto p-6 border-4 ${styles?.border} rounded-3xl hover:contrast-125 transition-all duration-300 group overflow-hidden justify-between z-10`}>
             <header className="flex flex-col items-center justify-center w-full mb-4 text-center">
                 <img src={image}
-                    className="size-64 object-cover object-top rounded-lg mask-radial-at-center mask-radial-from-90% mask-radial-to-100%" loading="lazy"
+                    className="size-64 object-cover object-top rounded-lg mask-radial-at-center mask-radial-from-90% mask-radial-to-100%" 
+                    loading={index < 2 ? "eager" : "lazy"}
+                    fetchPriority={index < 2 ? "high" : "auto"}
                     decoding="async" alt={name} />
                 <h2
                     className={`text-xl cursor-crosshair ${styles?.masterColor} align-center border-2 bg-black/40 ${styles?.border} tracking-wider shadow-2xl rounded-full p-3 group-hover:contrast-125 transition-all duration-300 font-inter mt-5 `}>
