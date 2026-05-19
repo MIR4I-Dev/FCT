@@ -10,8 +10,6 @@ export async function getStands({ part, search, order, page, limit = 10 }) {
 
         const res = await fetch(`${API_URL}/stands?${params.toString()}`);
 
-        await new Promise((resolve) => setTimeout(resolve, 400));
-
         if (!res.ok) return { data: [], totalPages: 0, nextPage: null, prevPage: null };
 
         const result = await res.json();

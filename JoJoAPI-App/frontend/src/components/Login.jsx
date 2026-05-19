@@ -88,7 +88,7 @@ export function Login() {
             <Header />
             <BlackOverlay />
             <main className="min-h-screen w-full flex items-center justify-center p-4 pt-32">
-                <div className="bg-black/60 border-4 border-yellow-500 p-8 rounded-2xl w-[400px] text-white shadow-[0_0_50px_rgba(234,179,8,0.2)] backdrop-blur-md">
+                <div className="bg-black/60 border-4 border-yellow-500 p-8 rounded-2xl w-full max-w-[400px] text-white shadow-[0_0_50px_rgba(234,179,8,0.2)] backdrop-blur-md">
                     <h1 className="text-3xl font-black text-center text-yellow-500 tracking-wider mb-6 font-inter">
                         LOG IN
                     </h1>

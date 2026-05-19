@@ -13,11 +13,11 @@ export function Pagination() {
     const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
     return (
-        <div className="flex items-center justify-center gap-2 mt-8 select-none">
+        <div className="flex items-center justify-center gap-1 sm:gap-2 mt-4 sm:mt-8 select-none flex-wrap md:flex-nowrap">
             <button
                 onClick={() => prevPage && changePage(prevPage)}
                 disabled={!prevPage}
-                className={`px-3 py-2 border-2 border-yellow-500 rounded-lg text-yellow-500 font-bold transition-all
+                className={`px-3 py-2 w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center border-2 border-yellow-500 rounded-lg text-yellow-500 font-bold transition-all
                     ${!prevPage
                         ? "opacity-30 cursor-not-allowed"
                         : "hover:bg-yellow-500 hover:text-black active:scale-95"}`}
@@ -29,7 +29,7 @@ export function Pagination() {
                 <button
                     key={pageNumber}
                     onClick={() => changePage(pageNumber)}
-                    className={`w-10 h-10 border-2 rounded-lg font-bold transition-all active:scale-95
+                    className={`w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center border-2 rounded-lg font-bold transition-all active:scale-95
                         ${currentPage === pageNumber
                             ? "bg-yellow-500 border-yellow-500 text-black shadow-lg shadow-yellow-500/20"
                             : "border-zinc-700 text-zinc-400 hover:border-yellow-500 hover:text-yellow-500"}`}
@@ -41,7 +41,7 @@ export function Pagination() {
             <button
                 onClick={() => nextPage && changePage(nextPage)}
                 disabled={!nextPage}
-                className={`px-3 py-2 border-2 border-yellow-500 rounded-lg text-yellow-500 font-bold transition-all
+                className={`px-3 py-2 w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center border-2 border-yellow-500 rounded-lg text-yellow-500 font-bold transition-all
                     ${!nextPage
                         ? "opacity-30 cursor-not-allowed"
                         : "hover:bg-yellow-500 hover:text-black active:scale-95"}`}

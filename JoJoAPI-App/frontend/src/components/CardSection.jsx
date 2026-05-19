@@ -15,7 +15,7 @@ export function CardSection() {
 
     return (
         <>
-            <div className="p-4 mt-28 text-white">
+            <div className="p-4 mt-30 text-white">
                 <Filters />
 
                 {isLoading ? (
